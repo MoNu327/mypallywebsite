@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class MediaFile(models.Model):
     file = models.FileField(upload_to='uploads/')
@@ -29,7 +30,20 @@ class MediaFile(models.Model):
         """Check if the file is a video"""
         video_extensions = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm']
         return self.file_extension() in video_extensions
-
+    
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    is_read = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"Message from {self.name} - {self.subject}"
 
 class PrayerRequest(models.Model):
     PRAYER_STATUS = [
@@ -41,11 +55,12 @@ class PrayerRequest(models.Model):
     message = models.TextField()
     approved = models.BooleanField(default=False, choices=PRAYER_STATUS)
     submitted_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)  # Track when prayer was approved/updated
+    updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    prayer_count = models.PositiveIntegerField(default=0)  # Add this field
+    
     class Meta:
-        ordering = ['-submitted_at']  # Newest prayers first
+        ordering = ['-submitted_at']
         verbose_name = 'Prayer Request'
         verbose_name_plural = 'Prayer Requests'
         indexes = [
@@ -56,23 +71,24 @@ class PrayerRequest(models.Model):
     def __str__(self):
         return f"Prayer from {self.name} ({'Approved' if self.approved else 'Pending'})"
     
+    def increment_prayer_count(self):
+        """Increment prayer count and save"""
+        self.prayer_count += 1
+        self.save()
+    
     def get_short_message(self, length=100):
-        """Return shortened message for display"""
         if len(self.message) <= length:
             return self.message
         return self.message[:length] + '...'
     
     @property
     def status(self):
-        """Return human-readable status"""
         return 'Approved' if self.approved else 'Pending Approval'
     
     @classmethod
     def get_approved_prayers(cls, limit=10):
-        """Get approved prayers with limit"""
         return cls.objects.filter(approved=True)[:limit]
     
     @classmethod
     def get_pending_prayers(cls):
-        """Get prayers pending approval"""
         return cls.objects.filter(approved=False)

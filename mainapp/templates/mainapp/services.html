@@ -55,13 +55,12 @@
         </div>
     </div>
 </section>
-
 <!-- Prayer Request Section -->
 <section id="prayer-section" class="prayer-section">
     <div class="container">
         <div class="section-header">
-            <h2>Prayer Requests</h2>
-            <p>Share your prayer requests with our community</p>
+            <h2>SHARE YOUR SACRED MESSAGE</h2>
+            <p>Let our community pray with you in faith and devotion</p>
         </div>
         
         <!-- Messages Display -->
@@ -76,36 +75,56 @@
         </div>
         {% endif %}
         
-        <div class="row">
+        <!-- Fixed Row Structure -->
+        <div class="row g-4">
             <!-- Prayer Request Form -->
             <div class="col-lg-5">
                 <div class="prayer-form-card">
                     <div class="card-header">
                         <i class="fas fa-praying-hands"></i>
-                        <h3>Submit a Prayer Request</h3>
+                        <h3>Share Your Sacred Message</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'services' %}#prayer-section" id="prayer-form">
+                        {% if form %}
+                        <form method="POST" action="{% url 'home' %}" id="prayer-form">
                             {% csrf_token %}
                             
+                            <!-- Name Field -->
                             <div class="form-group">
-                                <label for="name" class="form-label">Your Name *</label>
-                                <input type="text" id="name" name="name" class="form-control" 
-                                       value="{{ request.POST.name }}" required maxlength="100">
+                                <label class="form-label" for="{{ form.name.id_for_label }}">Your Blessed Name *</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.name.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
 
+                            <!-- Message Field -->
                             <div class="form-group">
-                                <label for="message" class="form-label">Your Prayer Request *</label>
-                                <textarea id="message" name="message" class="form-control" rows="5" 
-                                          placeholder="Please share your prayer intention..." 
-                                          required maxlength="500">{{ request.POST.message }}</textarea>
+                                <label class="form-label" for="{{ form.message.id_for_label }}">Your Sacred Message *</label>
+                                {{ form.message }}
                                 <small class="form-text text-muted">Maximum 500 characters</small>
+                                {% if form.message.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.message.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100" id="submit-btn">
-                                <i class="fas fa-paper-plane me-2"></i> Submit Prayer Request
+                                <i class="fas fa-paper-plane me-2"></i> SEND SACRED MESSAGE
                             </button>
                         </form>
+                        {% else %}
+                        <div class="alert alert-warning">
+                            Form is not available. Please contact administrator.
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -115,8 +134,8 @@
                 <div class="prayer-requests-card">
                     <div class="card-header">
                         <i class="fas fa-list-alt"></i>
-                        <h3>Recent Prayer Requests</h3>
-                        <span class="prayer-count">{{ prayers|length }} prayer{{ prayers|length|pluralize }}</span>
+                        <h3>Recent Sacred Messages</h3>
+                        <span class="prayer-count">{{ prayers|length }} message{{ prayers|length|pluralize }}</span>
                     </div>
                     <div class="card-body">
                         {% if prayers %}
@@ -133,7 +152,9 @@
                                         <div class="prayer-actions">
                                             <button class="btn-pray" data-prayer-id="{{ prayer.id }}">
                                                 <i class="fas fa-pray"></i> 
-                                                <span class="pray-count">Pray</span>
+                                                <span class="pray-count">
+                                                    Pray {% if prayer.prayer_count > 0 %}({{ prayer.prayer_count }}){% endif %}
+                                                </span>
                                             </button>
                                             <button class="btn-delete-prayer" data-prayer-id="{{ prayer.id }}" title="Delete Prayer">
                                                 <i class="fas fa-trash"></i>
@@ -145,7 +166,7 @@
                         {% else %}
                             <div class="empty-prayers">
                                 <i class="fas fa-pray"></i>
-                                <p>No prayer requests yet. Be the first to share your prayer intention.</p>
+                                <p>No sacred messages yet. Be the first to share your prayer intention.</p>
                             </div>
                         {% endif %}
                     </div>
@@ -990,25 +1011,51 @@
         });
         
         // Prayer counter functionality
-        const prayButtons = document.querySelectorAll('.btn-pray');
-        prayButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                let count = parseInt(this.getAttribute('data-pray-count')) || 0;
-                count++;
-                this.setAttribute('data-pray-count', count);
-                this.innerHTML = `<i class="fas fa-pray"></i> Pray (${count})`;
-                
-                // Add visual feedback
-                this.style.backgroundColor = 'var(--secondary-color)';
-                this.style.color = 'var(--dark-color)';
-                
-                setTimeout(() => {
-                    this.style.backgroundColor = '';
-                    this.style.color = '';
-                }, 300);
-            });
-        });
-        
+        // Replace the existing pray button functionality
+const prayButtons = document.querySelectorAll('.btn-pray');
+prayButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const prayerId = this.getAttribute('data-prayer-id');
+        incrementPrayerCount(prayerId, this);
+    });
+});
+
+function incrementPrayerCount(prayerId, buttonElement) {
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+    fetch(`/increment-prayer/${prayerId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+            'X-Requested-With': 'XMLHttpRequest',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the button text with the new count
+            const prayCount = buttonElement.querySelector('.pray-count');
+            if (prayCount) {
+                prayCount.textContent = `Pray (${data.prayer_count})`;
+            }
+            
+            // Add visual feedback
+            buttonElement.style.backgroundColor = 'var(--secondary-color)';
+            buttonElement.style.color = 'var(--dark-color)';
+            
+            setTimeout(() => {
+                buttonElement.style.backgroundColor = '';
+                buttonElement.style.color = '';
+            }, 300);
+        } else {
+            showAlert('error', 'Failed to update prayer count.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showAlert('error', 'An error occurred. Please try again.');
+    });
+}
         // Add entrance animations for cards
         const infoCards = document.querySelectorAll('.info-card, .quick-link-card');
         infoCards.forEach((card, index) => {

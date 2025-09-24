@@ -35,15 +35,18 @@
             line-height: 1.7;
         }
 
-        /* Navbar */
-        .navbar {
-            background: linear-gradient(180deg, var(--primary-color), var(--dark-color));
-            box-shadow: 0 3px 15px rgba(139, 69, 19, 0.4);
-            padding: 15px 0;
-            transition: all 0.4s ease;
-            border-bottom: 3px solid var(--secondary-color);
-        }
-        
+       /* Navbar */
+.navbar {
+    background: linear-gradient(180deg, var(--primary-color), var(--dark-color));
+    box-shadow: 0 3px 15px rgba(139, 69, 19, 0.4);
+    padding: 15px 0;
+    transition: all 0.4s ease;
+    border-bottom: 3px solid var(--secondary-color);
+    z-index: 1000; /* Ensure navbar stays on top */
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
         .navbar-scrolled {
             padding: 8px 0;
             background: linear-gradient(180deg, rgba(139, 69, 19, 0.98), rgba(101, 67, 33, 0.98));
@@ -106,23 +109,24 @@
         }
 
         /* Hero Section */
-        .hero-section {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: 
-                radial-gradient(circle at center, rgba(139, 69, 19, 0.1), transparent 50%),
-                linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(218, 165, 32, 0.2));
-        }
-        
-        .hero-content {
-            z-index: 2;
-            padding: 2rem;
-            animation: sacredFadeIn 2s ease;
-        }
+.hero-section {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    background: 
+        radial-gradient(circle at center, rgba(139, 69, 19, 0.1), transparent 50%),
+        linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(218, 165, 32, 0.2));
+    
+}
+
+ .hero-content {
+        z-index: 2;
+        padding: 2rem;
+        animation: sacredFadeIn 2s ease;
+    }
         
         .hero-title {
             font-family: 'Cinzel', serif;
@@ -425,10 +429,27 @@
             text-shadow: 0 0 10px var(--gold-color);
         }
         
+        /* Social Media Section - Centered at Bottom */
+        .social-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 2px solid rgba(218, 165, 32, 0.3);
+            margin-top: 2rem;
+        }
+        
+        .social-title {
+            color: var(--gold-color);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
         .social-icons {
             display: flex;
             gap: 20px;
-            justify-content: flex-start;
+            justify-content: center;
         }
         
         .social-icons a {
@@ -591,7 +612,7 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">About Cathedral</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">About </a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
             </ul>
         </div>
@@ -660,8 +681,7 @@
             <div class="col-md-4">
                 <div class="event-card">
                     <div class="position-relative">
-{% load static %}
-<img src="{% static 'images/lords-day.jpg' %}" alt="Holy Mass" class="event-img">
+                        <img src="{% static 'images/lords-day.jpg' %}" alt="Holy Mass" class="event-img">
                         <div class="event-date">Lord's Day</div>
                     </div>
                     <div class="event-content">
@@ -711,12 +731,6 @@
             <div class="col-md-4 mb-4">
                 <h4 class="footer-title">St. Ignatius Simhasana Cathedral Kottayam</h4>
                 <p>A sacred place of worship, community fellowship, and spiritual growth in the blessed city of Kottayam.</p>
-                <div class="social-icons mt-4">
-                    <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
             </div>
             <div class="col-md-4 mb-4">
                 <h4 class="footer-title">Sacred Links</h4>
@@ -734,9 +748,21 @@
                 <p><i class="fas fa-envelope"></i> info@stignatiuscathedral.org</p>
             </div>
         </div>
+        
+        <!-- Social Media Section - Centered at Bottom -->
+        <div class="social-section">
+            <h4 class="social-title">Follow Us on Social Media</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        
         <div class="copyright">
             <p>† In Nomine Patris, et Filii, et Spiritus Sancti †<br>
-            &copy; 5 St. Ignatius Simhasana Cathedral Kottayam. All Rights Reserved.</p>
+            &copy; 2025 St. Ignatius Simhasana Cathedral Kottayam. All Rights Reserved.</p>
         </div>
     </div>
 </footer>

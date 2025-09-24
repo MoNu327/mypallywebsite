@@ -176,6 +176,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
             text-transform: uppercase;
+            position: relative;
         }
         
         .footer-links a {
@@ -215,7 +216,10 @@
         .social-icons {
             display: flex;
             gap: 20px;
-            justify-content: flex-start;
+            justify-content: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(218, 165, 32, 0.3);
         }
         
         .social-icons a {
@@ -295,6 +299,23 @@
             transform: translateY(-50%);
             color: var(--gold-color);
             font-size: 1.2rem;
+        }
+
+        /* Social Media Section - Centered at Bottom */
+        .social-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 2px solid rgba(218, 165, 32, 0.3);
+            margin-top: 2rem;
+        }
+        
+        .social-title {
+            color: var(--gold-color);
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
         }
 
         /* Improved Responsive Design */
@@ -449,7 +470,7 @@
                     <a class="nav-link {% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/history/' %}active{% endif %}" href="{% url 'history' %}">About Cathedral</a>
+                    <a class="nav-link {% if request.path == '/history/' %}active{% endif %}" href="{% url 'history' %}">About </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/events/' %}active{% endif %}" href="{% url 'events' %}">Events</a>
@@ -471,12 +492,6 @@
             <div class="col-md-4 mb-4">
                 <h4 class="footer-title">St. Ignatius Simhasana Cathedral Kottayam</h4>
                 <p>A sacred place of worship, community fellowship, and spiritual growth in the blessed city of Kottayam.</p>
-                <div class="social-icons mt-4">
-                    <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank"> <i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
             </div>
             <div class="col-md-4 mb-4">
                 <h4 class="footer-title">Sacred Links</h4>
@@ -494,9 +509,20 @@
                 <p><i class="fas fa-envelope"></i> info@stignatiuscathedral.org</p>
             </div>
         </div>
+        
+        <!-- Social Media Section - Centered at Bottom -->
+        <div class="social-section">
+            <h4 class="social-title">Follow Us on Social Media</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank"> <i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        
         <div class="copyright">
-            <p>† In Nomine Patris, et Filii, et Spiritus Sancti †<br>
-            &copy; 2025 St. Ignatius Simhasana Cathedral Kottayam. All Rights Reserved.</p>
+            &copy; 2025 St. Ignatius Simhasana Cathedral Kottayam. All Rights Reserved.
         </div>
     </div>
 </footer>

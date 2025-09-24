@@ -1,6 +1,5 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
-
 {% block title %}Gallery - St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
 
 {% block extra_css %}
@@ -709,7 +708,10 @@
 {% endblock %}
 
 {% block extra_js %}
+{% url 'delete_gallery_media' 0 as delete_url_template %}
+
 <script>
+    const deleteUrlTemplate = "{{ delete_url_template }}".replace('/0/', '/');
 // File preview functionality
 function previewFile() {
     const previewContainer = document.getElementById('previewContainer');
@@ -841,22 +843,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Confirm delete button
-    const confirmDeleteBtn = document.getElementById('confirmDelete');
-    if (confirmDeleteBtn) {
-        confirmDeleteBtn.addEventListener('click', function() {
-            if (deleteMediaId) {
-                // Send AJAX request to delete the media
-                fetch(`/gallery/delete/${deleteMediaId}/`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Find the gallery item to remove - Fixed selector
+   const confirmDeleteBtn = document.getElementById('confirmDelete');
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', function() {
+                if (deleteMediaId) {
+                    // Send AJAX request to delete the media - FIXED URL
+                    fetch(`/delete-gallery-media/${deleteMediaId}/`, {
+    method: 'DELETE',
+    headers: {
+        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+        'Content-Type': 'application/json',
+    },
+})
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Failed to delete media');
+                        }
+                    })
+                    .then(data => {
+                        // Find and remove the gallery item
                         const deleteButton = document.querySelector(`.delete-btn[data-id="${deleteMediaId}"]`);
                         if (deleteButton) {
                             const galleryItem = deleteButton.closest('.gallery-item');
@@ -888,29 +895,22 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                         
-                        // Show success message
                         showMessage('Media deleted successfully!', 'success');
-                    } else {
-                        response.json().then(data => {
-                            showMessage(data.error || 'Failed to delete media. Please try again.', 'error');
-                        }).catch(() => {
-                            showMessage('Failed to delete media. Please try again.', 'error');
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showMessage('An error occurred while deleting the media.', 'error');
-                });
-                
-                // Close the modal properly
-                if (deleteModal) {
-                    deleteModal.hide();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage('Failed to delete media. Please try again.', 'error');
+                    })
+                    .finally(() => {
+                        // Close the modal properly
+                        if (deleteModal) {
+                            deleteModal.hide();
+                        }
+                        deleteMediaId = null;
+                    });
                 }
-                deleteMediaId = null;
-            }
-        });
-    }
+            });
+        }
     
     // Form submission handling
     const uploadForm = document.getElementById('uploadForm');

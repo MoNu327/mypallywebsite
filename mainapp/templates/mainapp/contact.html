@@ -336,6 +336,27 @@
         line-height: 1.6;
     }
     
+    /* Form validation styles */
+    .error-message {
+        color: #dc3545;
+        font-size: 0.9rem;
+        margin-top: -15px;
+        margin-bottom: 15px;
+        font-family: 'Crimson Text', serif;
+        font-style: italic;
+    }
+    
+    .success-message {
+        background: rgba(40, 167, 69, 0.1);
+        border: 1px solid rgba(40, 167, 69, 0.3);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        color: #155724;
+        font-family: 'Crimson Text', serif;
+        text-align: center;
+    }
+    
     /* Clean section styling */
     .main-content {
         background: transparent;
@@ -386,6 +407,15 @@
 </section>
 
 <div class="container">
+    <!-- Success Message -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i> {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <!-- Contact Information Cards -->
     <div class="row mb-5">
         <div class="col-md-4 mb-4">
@@ -433,24 +463,49 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form">
                 <h3>Share Your Sacred Message</h3>
-                <form id="contactForm">
+                <form method="post" id="contactForm">
+                    {% csrf_token %}
+                    
+                    <!-- Display form errors -->
+                    {% if form.errors %}
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i> Please correct the errors below.
+                        </div>
+                    {% endif %}
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Blessed Name" required>
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                    <div class="error-message">{{ form.name.errors.0 }}</div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Your Sacred Email" required>
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="error-message">{{ form.email.errors.0 }}</div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Message Subject">
+                        {{ form.subject.label_tag }}
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <div class="error-message">{{ form.subject.errors.0 }}</div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="6" placeholder="Share your thoughts, prayer requests, or inquiries with our parish family..." required></textarea>
+                        {{ form.message.label_tag }}
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <div class="error-message">{{ form.message.errors.0 }}</div>
+                        {% endif %}
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-sacred-primary">Send Sacred Message</button>
@@ -478,9 +533,9 @@
                 <div class="mt-4">
                     <h4 style="font-family: 'Cinzel', serif; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Join Our Sacred Community</h4>
                     <div class="social-contact">
-<a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank">
-  <i class="fab fa-facebook-f"></i>
-</a>
+                        <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                         <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -512,33 +567,51 @@
 
 {% block extra_js %}
 <script>
-    // Form submission handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    // Form validation styling
+    document.addEventListener('DOMContentLoaded', function() {
+        const formInputs = document.querySelectorAll('.form-control');
         
-        // Simple form validation
-        let isValid = true;
-        
-        this.querySelectorAll('[required]').forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.style.borderColor = '#dc3545';
-                input.style.boxShadow = '0 0 8px rgba(220, 53, 69, 0.3)';
-            } else {
-                input.style.borderColor = 'var(--secondary-color)';
-                input.style.boxShadow = '0 0 8px rgba(218, 165, 32, 0.3)';
-            }
+        formInputs.forEach(input => {
+            // Add focus styling
+            input.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--secondary-color)';
+                this.style.boxShadow = '0 0 8px rgba(218, 165, 32, 0.3)';
+            });
+            
+            // Remove error styling on input
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = 'var(--secondary-color)';
+                    this.style.boxShadow = '0 0 8px rgba(218, 165, 32, 0.3)';
+                }
+            });
+            
+            // Blur styling
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = 'rgba(139, 69, 19, 0.3)';
+                    this.style.boxShadow = 'none';
+                }
+            });
         });
         
-        if (isValid) {
-            alert('✠ Blessed be your message! Our parish family will respond to you with Christian love and care. Peace be with you. ✠');
-            this.reset();
-            
-            // Reset form styling
-            this.querySelectorAll('input, textarea').forEach(input => {
-                input.style.borderColor = 'rgba(139, 69, 19, 0.3)';
-                input.style.boxShadow = 'none';
-            });
+        // Add labels to form fields if they don't exist
+        const nameField = document.querySelector('#id_name');
+        const emailField = document.querySelector('#id_email');
+        const subjectField = document.querySelector('#id_subject');
+        const messageField = document.querySelector('#id_message');
+        
+        if (nameField && !nameField.previousElementSibling) {
+            nameField.placeholder = 'Your Blessed Name';
+        }
+        if (emailField && !emailField.previousElementSibling) {
+            emailField.placeholder = 'Your Sacred Email';
+        }
+        if (subjectField && !subjectField.previousElementSibling) {
+            subjectField.placeholder = 'Message Subject';
+        }
+        if (messageField && !messageField.previousElementSibling) {
+            messageField.placeholder = 'Share your thoughts, prayer requests, or inquiries with our parish family...';
         }
     });
     
