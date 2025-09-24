@@ -1,0 +1,568 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Contact - St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Clean Contact Page Styles matching base theme */
+    body {
+        background: 
+            radial-gradient(circle at top, rgba(139, 69, 19, 0.15), transparent 70%),
+            linear-gradient(180deg, rgba(245, 245, 220, 0.95), rgba(218, 165, 32, 0.1)) !important;
+        color: var(--accent-color);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    .contact-hero {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(218, 165, 32, 0.05));
+        padding: 120px 0 80px;
+        text-align: center;
+        margin-bottom: 60px;
+        border-bottom: 2px solid rgba(139, 69, 19, 0.2);
+    }
+    
+    .contact-hero h1 {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        margin-bottom: 25px;
+        font-size: 3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-variant: small-caps;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-hero p {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.4rem;
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent-color);
+        line-height: 1.8;
+        font-style: italic;
+    }
+    
+    .contact-container {
+        background: rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(139, 69, 19, 0.2);
+        border-radius: 12px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 20px rgba(139, 69, 19, 0.15);
+        backdrop-filter: blur(5px);
+    }
+    
+    .contact-info-card {
+        background: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        height: 100%;
+        transition: all 0.4s ease;
+        margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
+    }
+    
+    .contact-info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+        border-color: var(--secondary-color);
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-info-card h4 {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .contact-info-card p {
+        font-family: 'Crimson Text', serif;
+        color: var(--accent-color);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 8px;
+    }
+    
+    .contact-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        display: block;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+    }
+    
+    .contact-form {
+        background: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 5px 20px rgba(139, 69, 19, 0.15);
+        backdrop-filter: blur(5px);
+    }
+    
+    .contact-form h3 {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        position: relative;
+    }
+    
+    .contact-form h3:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+        border-radius: 1px;
+    }
+    
+    .form-control {
+        background: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(139, 69, 19, 0.3);
+        color: var(--accent-color);
+        padding: 15px 18px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-family: 'Crimson Text', serif;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control::placeholder {
+        color: rgba(47, 79, 79, 0.6);
+        font-style: italic;
+    }
+    
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        color: var(--accent-color);
+        outline: none;
+    }
+    
+    .btn-sacred-primary {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        border: 2px solid var(--gold-color);
+        color: var(--dark-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-sacred-primary:hover {
+        background: linear-gradient(135deg, var(--gold-color), var(--secondary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+        color: var(--primary-color);
+    }
+    
+    .btn-outline-sacred {
+        border: 2px solid var(--secondary-color);
+        color: var(--secondary-color);
+        background: rgba(218, 165, 32, 0.1);
+        font-family: 'Cinzel', serif;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: inline-block;
+        backdrop-filter: blur(3px);
+    }
+    
+    .btn-outline-sacred:hover {
+        background: var(--secondary-color);
+        color: var(--cream-color);
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
+    }
+    
+    .map-container {
+        border: 2px solid var(--secondary-color);
+        border-radius: 12px;
+        overflow: hidden;
+        height: 400px;
+        box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
+    }
+    
+    .office-hours {
+        list-style: none;
+        padding: 0;
+        font-family: 'Crimson Text', serif;
+    }
+    
+    .office-hours li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 20px;
+    }
+    
+    .office-hours li:before {
+        content: '◆';
+        position: absolute;
+        left: 0;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+    }
+    
+    .office-hours li:last-child {
+        border-bottom: none;
+    }
+    
+    .office-hours li strong {
+        color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .social-contact {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        justify-content: flex-start;
+    }
+    
+    .social-contact a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--primary-color), var(--burgundy-color));
+        border: 2px solid var(--secondary-color);
+        border-radius: 8px;
+        color: var(--cream-color);
+        transition: all 0.4s ease;
+        font-size: 1.2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .social-contact a:hover {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        color: var(--dark-color);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+        border-color: var(--gold-color);
+    }
+    
+    .section-title-contact {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .section-title-contact:before {
+        content: '◆';
+        position: absolute;
+        left: 50%;
+        top: -25px;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+    }
+    
+    .section-title-contact:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+        border-radius: 1px;
+    }
+    
+    .emergency-info {
+        background: rgba(128, 0, 32, 0.08);
+        border: 2px solid rgba(128, 0, 32, 0.3);
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 25px;
+        backdrop-filter: blur(3px);
+    }
+    
+    .emergency-info h4 {
+        font-family: 'Cinzel', serif;
+        color: var(--burgundy-color);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .emergency-info p {
+        color: var(--accent-color);
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+    
+    /* Clean section styling */
+    .main-content {
+        background: transparent;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding: 100px 0 60px;
+        }
+        
+        .contact-hero h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+        }
+        
+        .contact-container, .contact-form {
+            padding: 25px;
+        }
+        
+        .contact-info-card {
+            margin-bottom: 20px;
+        }
+        
+        .social-contact {
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .section-title-contact {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="contact-hero">
+    <div class="container">
+        <h1>Connect With Our Sacred Community</h1>
+        <p>We welcome all faithful souls seeking spiritual guidance, fellowship, or assistance. Our doors and hearts are always open to serve you in Christ's love.</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Contact Information Cards -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fas fa-church"></i>
+                </div>
+                <h4>Our Sacred Location</h4>
+                <p>St. Ignatius Simhasana Cathedral</p>
+                <p>Cathedral Road, Kottayam</p>
+                <p>Kerala, India - 686001</p>
+                <a href="#map" class="btn btn-outline-sacred mt-3">Sacred Directions</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h4>Divine Communication</h4>
+                <p><strong>Parish Office:</strong></p>
+                <p>+91 481 256 7890</p>
+                <p><strong>Emergency Pastoral Care:</strong></p>
+                <p>+91 9847 123 456</p>
+                <a href="tel:+914812567890" class="btn btn-outline-sacred mt-3">Call Blessed Office</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope-open"></i>
+                </div>
+                <h4>Sacred Correspondence</h4>
+                <p><strong>General Inquiries:</strong></p>
+                <p>info@stignatiuskottayam.com</p>
+                <p><strong>Parish Office:</strong></p>
+                <p>office@stignatiuskottayam.com</p>
+                <a href="mailto:info@stignatiuskottayam.com" class="btn btn-outline-sacred mt-3">Send Sacred Message</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-7 mb-5">
+            <div class="contact-form">
+                <h3>Share Your Sacred Message</h3>
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Blessed Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Sacred Email" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Message Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="6" placeholder="Share your thoughts, prayer requests, or inquiries with our parish family..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-sacred-primary">Send Sacred Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="col-lg-5 mb-5">
+            <div class="contact-container">
+                <h3 class="section-title-contact" style="font-size: 1.6rem; margin-bottom: 30px;">Parish Office Hours</h3>
+                <ul class="office-hours">
+                    <li><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
+                    <li><strong>Saturday:</strong> 8:00 AM - 5:00 PM</li>
+                    <li><strong>Sunday:</strong> 7:00 AM - 12:00 PM</li>
+                    <li><strong>Holy Days:</strong> Special Hours as Announced</li>
+                </ul>
+                
+                <div class="emergency-info">
+                    <h4>Pastoral Emergency Care</h4>
+                    <p>For urgent spiritual needs, last rites, or pastoral emergencies outside regular hours, our clergy is available at: <strong>+91 9847 123 456</strong></p>
+                </div>
+                
+                <div class="mt-4">
+                    <h4 style="font-family: 'Cinzel', serif; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px;">Join Our Sacred Community</h4>
+                    <div class="social-contact">
+<a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank">
+  <i class="fab fa-facebook-f"></i>
+</a>
+                        <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 id="map" class="section-title-contact">Find Our Sacred Haven</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.8234567890123!2d76.5103296!3d9.5923748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062b06e29d0393%3A0xd1ae0a0e479d2ba9!2sSt.%20Ignatius%20Simhasana%20Cathedral!5e0!3m2!1sen!2sin!4v1632847234567!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        let isValid = true;
+        
+        this.querySelectorAll('[required]').forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = '#dc3545';
+                input.style.boxShadow = '0 0 8px rgba(220, 53, 69, 0.3)';
+            } else {
+                input.style.borderColor = 'var(--secondary-color)';
+                input.style.boxShadow = '0 0 8px rgba(218, 165, 32, 0.3)';
+            }
+        });
+        
+        if (isValid) {
+            alert('✠ Blessed be your message! Our parish family will respond to you with Christian love and care. Peace be with you. ✠');
+            this.reset();
+            
+            // Reset form styling
+            this.querySelectorAll('input, textarea').forEach(input => {
+                input.style.borderColor = 'rgba(139, 69, 19, 0.3)';
+                input.style.boxShadow = 'none';
+            });
+        }
+    });
+    
+    // Smooth scrolling for map link
+    document.querySelector('a[href="#map"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+    
+    // Add traditional entrance animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.contact-info-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+    });
+</script>
+{% endblock %}

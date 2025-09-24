@@ -1,0 +1,1035 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Gallery - St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Gallery Page Specific Styles */
+    .gallery-hero {
+        background: 
+            radial-gradient(circle at center, rgba(139, 69, 19, 0.3), transparent 70%),
+            linear-gradient(180deg, rgba(245, 245, 220, 0.9), rgba(218, 165, 32, 0.2)),
+            url("{% static 'images/pally1.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+        padding: 120px 0 80px;
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        border-bottom: 3px solid var(--secondary-color);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-hero h1 {
+        font-family: 'Cinzel', serif;
+        color: var(--dark-color);
+        margin-bottom: 20px;
+        font-size: 2.8rem;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        letter-spacing: 1px;
+    }
+
+    .gallery-hero p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent-color);
+        font-family: 'Crimson Text', serif;
+        line-height: 1.6;
+    }
+
+    .upload-container {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.9));
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        border: 2px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .upload-container:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: repeating-linear-gradient(
+            90deg,
+            var(--secondary-color),
+            var(--secondary-color) 15px,
+            var(--gold-color) 15px,
+            var(--gold-color) 30px
+        );
+    }
+
+    .upload-card {
+        background: rgba(245, 245, 220, 0.1);
+        border-radius: 10px;
+        padding: 25px;
+        height: 100%;
+        border-left: 5px solid var(--secondary-color);
+        transition: all 0.4s ease;
+        backdrop-filter: blur(5px);
+    }
+
+    .upload-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        border-left-color: var(--gold-color);
+    }
+
+    .upload-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    }
+
+    .gallery-form {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.9));
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        border: 2px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-form:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: repeating-linear-gradient(
+            90deg,
+            var(--secondary-color),
+            var(--secondary-color) 15px,
+            var(--gold-color) 15px,
+            var(--gold-color) 30px
+        );
+    }
+
+    .form-control {
+        background: rgba(245, 245, 220, 0.15);
+        border: 2px solid rgba(218, 165, 32, 0.4);
+        color: var(--cream-color);
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-family: 'Crimson Text', serif;
+        font-size: 1.05rem;
+    }
+
+    .form-control:focus {
+        background: rgba(245, 245, 220, 0.2);
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.25rem rgba(218, 165, 32, 0.25);
+        color: var(--cream-color);
+    }
+
+    .form-label {
+        color: var(--cream-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        border: 2px solid var(--secondary-color);
+        color: var(--dark-color);
+        padding: 12px 25px;
+        font-weight: 600;
+        transition: all 0.4s;
+        border-radius: 8px;
+        font-family: 'Cinzel', serif;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--gold-color), var(--secondary-color));
+        border-color: var(--gold-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(218, 165, 32, 0.4);
+        color: var(--dark-color);
+    }
+
+    .gallery-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.9));
+        border: 2px solid var(--secondary-color);
+        padding: 25px;
+        position: relative;
+    }
+
+    .gallery-container:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: repeating-linear-gradient(
+            90deg,
+            var(--secondary-color),
+            var(--secondary-color) 15px,
+            var(--gold-color) 15px,
+            var(--gold-color) 30px
+        );
+    }
+
+    .gallery-card {
+        background: rgba(245, 245, 220, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        height: 100%;
+        border-left: 5px solid var(--secondary-color);
+        transition: all 0.4s ease;
+        margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+        overflow: hidden;
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        border-left-color: var(--gold-color);
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.4s ease;
+        border: 2px solid rgba(218, 165, 32, 0.3);
+    }
+
+    .gallery-card:hover .gallery-image {
+        transform: scale(1.05);
+        border-color: var(--secondary-color);
+    }
+
+    .gallery-video {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid rgba(218, 165, 32, 0.3);
+    }
+
+    .gallery-video-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .gallery-card:hover .video-overlay {
+        opacity: 1;
+    }
+
+    .video-overlay i {
+        font-size: 3rem;
+        color: var(--gold-color);
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    }
+
+    .media-info {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .media-info li {
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.95rem;
+        color: var(--cream-color);
+        font-family: 'Crimson Text', serif;
+    }
+
+    .media-info li:last-child {
+        border-bottom: none;
+    }
+
+    .media-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .social-gallery {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-gallery a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #fff;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+    }
+
+    .social-gallery a:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+        transform: translateY(-3px);
+    }
+
+    .preview-container {
+        background: rgba(245, 245, 220, 0.15);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 2px dashed rgba(218, 165, 32, 0.4);
+    }
+
+    #filePreview img, #filePreview video {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 4px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(218, 165, 32, 0.3);
+    }
+
+    .upload-guidelines {
+        background: rgba(245, 245, 220, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        border-left: 5px solid var(--secondary-color);
+        backdrop-filter: blur(5px);
+    }
+
+    .upload-guidelines h6 {
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+    }
+
+    .upload-guidelines ul {
+        color: rgba(255, 255, 255, 0.9);
+        padding-left: 20px;
+        font-family: 'Crimson Text', serif;
+    }
+
+    .upload-guidelines ul li {
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .upload-guidelines ul li:before {
+        content: '†';
+        position: absolute;
+        left: -15px;
+        color: var(--secondary-color);
+        font-weight: bold;
+    }
+
+    .empty-gallery {
+        text-align: center;
+        padding: 60px 20px;
+        background: rgba(245, 245, 220, 0.1);
+        border-radius: 8px;
+        border-left: 5px solid var(--secondary-color);
+        backdrop-filter: blur(5px);
+    }
+
+    .empty-gallery i {
+        font-size: 4rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    }
+
+    .empty-gallery h5 {
+        color: var(--secondary-color);
+        font-family: 'Cinzel', serif;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .empty-gallery p {
+        color: var(--cream-color);
+        font-family: 'Crimson Text', serif;
+        font-size: 1.1rem;
+    }
+
+    /* Filter buttons */
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .btn-outline-primary {
+        color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        background: transparent;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        transition: all 0.4s;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary.active {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        border-color: var(--secondary-color);
+        color: var(--dark-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal styling */
+    .modal-content {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(101, 67, 33, 0.95));
+        border: 2px solid var(--secondary-color);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .modal-content:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: repeating-linear-gradient(
+            90deg,
+            var(--secondary-color),
+            var(--secondary-color) 15px,
+            var(--gold-color) 15px,
+            var(--gold-color) 30px
+        );
+        z-index: 1;
+    }
+
+    .modal-header {
+        border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-title {
+        color: var(--secondary-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-close {
+        filter: invert(1);
+        opacity: 0.8;
+    }
+
+    .btn-close:hover {
+        opacity: 1;
+    }
+
+    .btn-outline-secondary, .btn-outline-danger {
+        border-radius: 8px;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.4s;
+    }
+
+    .btn-outline-secondary {
+        color: var(--cream-color);
+        border-color: var(--cream-color);
+    }
+
+    .btn-outline-secondary:hover {
+        background: var(--cream-color);
+        color: var(--dark-color);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-danger {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-outline-danger:hover {
+        background: #dc3545;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .card-text {
+        color: var(--cream-color);
+        font-family: 'Crimson Text', serif;
+        font-size: 0.95rem;
+    }
+
+    .card-text i {
+        color: var(--secondary-color);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .gallery-hero {
+            padding: 100px 0 60px;
+        }
+        
+        .gallery-hero h1 {
+            font-size: 2.2rem;
+        }
+        
+        .gallery-hero p {
+            font-size: 1.1rem;
+        }
+        
+        .upload-container, .gallery-form {
+            padding: 20px;
+        }
+        
+        .gallery-card {
+            margin-bottom: 15px;
+        }
+        
+        .gallery-image, .gallery-video {
+            height: 180px;
+        }
+        
+        .filter-buttons {
+            justify-content: center;
+        }
+        
+        .media-actions {
+            flex-direction: column;
+        }
+        
+        .btn-outline-primary {
+            font-size: 0.9rem;
+            padding: 8px 15px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .gallery-hero h1 {
+            font-size: 1.8rem;
+        }
+        
+        .gallery-image, .gallery-video {
+            height: 150px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gallery-hero">
+    <div class="container">
+        <h1>Sacred Gallery</h1>
+        <p>Share and explore the beautiful moments from our parish community. Upload your photos and videos to celebrate our faith journey together.</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <!-- Left side: Upload Form -->
+        <div class="col-lg-4 mb-4">
+            <div class="upload-container">
+                <h4 class="text-center mb-4" style="color: var(--cream-color); font-family: 'Cinzel', serif;">
+                    <i class="fas fa-cloud-upload-alt me-2"></i>Upload Media
+                </h4>
+                <form method="post" enctype="multipart/form-data" id="uploadForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select Image or Video</label>
+                        <input type="file" name="file" class="form-control" accept="image/*,video/*" required 
+                               id="fileInput" onchange="previewFile()">
+                    </div>
+                    
+                    <!-- Preview container -->
+                    <div class="preview-container text-center" id="previewContainer" style="display: none;">
+                        <p class="small mb-2" style="color: var(--cream-color);">Preview:</p>
+                        <div id="filePreview"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="fas fa-upload me-2"></i>Upload to Gallery
+                    </button>
+                </form>
+                
+                <!-- Upload guidelines -->
+                <div class="upload-guidelines mt-4">
+                    <h6><i class="fas fa-info-circle me-2"></i>Upload Guidelines</h6>
+                    <ul class="small ps-3 mb-0">
+                        <li>Supported formats: JPG, PNG, MP4</li>
+                        <li>Maximum file size: 10MB</li>
+                        <li>Only parish-related content please</li>
+                        <li>Respect privacy and copyrights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side: Gallery -->
+        <div class="col-lg-8">
+            <div class="gallery-container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="mb-0" style="color: var(--cream-color); font-family: 'Cinzel', serif;">Parish Gallery</h3>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" data-filter="all">All</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="image">Images</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="video">Videos</button>
+                    </div>
+                </div>
+                
+                {% if media_files %}
+                <div class="row" id="galleryGrid">
+                    {% for media in media_files %}
+                    <div class="col-sm-6 col-md-4 mb-4 gallery-item" data-type="{% if media.file.url|lower|slice:'-4:' == '.mp4' %}video{% else %}image{% endif %}">
+                        <div class="card gallery-card h-100">
+                            {% if media.file.url|lower|slice:"-4:" == ".mp4" %}
+                                <div class="gallery-video-container">
+                                    <video class="gallery-video">
+                                        <source src="{{ media.file.url }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="video-overlay">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <img src="{{ media.file.url }}" class="gallery-image" alt="Gallery image" loading="lazy">
+                            {% endif %}
+                            <div class="card-body p-3">
+                                <p class="card-text small mb-0">
+                                    <i class="fas fa-calendar-alt me-2"></i>{{ media.uploaded_at|date:"M d, Y" }}
+                                </p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 pt-0">
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-secondary view-btn flex-fill" data-url="{{ media.file.url }}">
+                                        <i class="fas fa-expand me-1"></i>View
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ media.id }}" data-filename="{{ media.file.name }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-gallery">
+                    <i class="fas fa-images fa-3x mb-3"></i>
+                    <h5>No media uploaded yet</h5>
+                    <p>Be the first to share a beautiful moment from our parish community</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for viewing media -->
+<div class="modal fade" id="mediaModal" tabindex="-1" aria-labelledby="mediaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediaModalLabel">Media View</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img id="modalImage" src="" class="img-fluid" style="display: none;" alt="Gallery media">
+                <video id="modalVideo" controls class="w-100" style="display: none;">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Confirm Delete
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3" style="color: var(--cream-color);">Are you sure you want to delete this media file?</p>
+                <p class="small text-muted mb-0" id="deleteFileName">File: example.jpg</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">
+                    <i class="fas fa-trash me-2"></i>Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// File preview functionality
+function previewFile() {
+    const previewContainer = document.getElementById('previewContainer');
+    const filePreview = document.getElementById('filePreview');
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    
+    filePreview.innerHTML = '';
+    previewContainer.style.display = 'none';
+    
+    if (file) {
+        previewContainer.style.display = 'block';
+        
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = 'File preview';
+                filePreview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        } else if (file.type.startsWith('video/')) {
+            const video = document.createElement('video');
+            video.controls = true;
+            video.src = URL.createObjectURL(file);
+            video.style.maxWidth = '100%';
+            filePreview.appendChild(video);
+        }
+    }
+}
+
+// DOM Content Loaded Event
+document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
+    document.querySelectorAll('[data-filter]').forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Filter items with smooth animation
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-type') === filter) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Delete functionality - Fixed
+    let deleteMediaId = null;
+    let deleteModal = null;
+    
+    // Initialize delete modal
+    const deleteModalElement = document.getElementById('deleteModal');
+    if (deleteModalElement) {
+        deleteModal = new bootstrap.Modal(deleteModalElement);
+    }
+    
+    // Attach delete button listeners using event delegation
+    document.addEventListener('click', function(e) {
+        // Handle delete button clicks
+        if (e.target.matches('.delete-btn') || e.target.closest('.delete-btn')) {
+            e.preventDefault();
+            const button = e.target.matches('.delete-btn') ? e.target : e.target.closest('.delete-btn');
+            
+            if (button) {
+                deleteMediaId = button.getAttribute('data-id');
+                const fileName = button.getAttribute('data-filename');
+                
+                const deleteFileNameElement = document.getElementById('deleteFileName');
+                if (deleteFileNameElement && fileName) {
+                    deleteFileNameElement.textContent = `File: ${fileName}`;
+                }
+                
+                if (deleteModal) {
+                    deleteModal.show();
+                }
+            }
+        }
+        
+        // Handle view button clicks
+        if (e.target.matches('.view-btn') || e.target.closest('.view-btn')) {
+            e.preventDefault();
+            const button = e.target.matches('.view-btn') ? e.target : e.target.closest('.view-btn');
+            
+            if (button) {
+                const url = button.getAttribute('data-url');
+                
+                const modalImage = document.getElementById('modalImage');
+                const modalVideo = document.getElementById('modalVideo');
+                
+                if (modalImage && modalVideo) {
+                    // Reset modal content
+                    modalImage.style.display = 'none';
+                    modalVideo.style.display = 'none';
+                    modalVideo.pause();
+                    
+                    if (url && url.toLowerCase().endsWith('.mp4')) {
+                        modalVideo.style.display = 'block';
+                        modalVideo.src = url;
+                    } else if (url) {
+                        modalImage.style.display = 'block';
+                        modalImage.src = url;
+                    }
+                    
+                    const mediaModalElement = document.getElementById('mediaModal');
+                    if (mediaModalElement) {
+                        const modal = new bootstrap.Modal(mediaModalElement);
+                        modal.show();
+                    }
+                }
+            }
+        }
+    });
+    
+    // Confirm delete button
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', function() {
+            if (deleteMediaId) {
+                // Send AJAX request to delete the media
+                fetch(`/gallery/delete/${deleteMediaId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Find the gallery item to remove - Fixed selector
+                        const deleteButton = document.querySelector(`.delete-btn[data-id="${deleteMediaId}"]`);
+                        if (deleteButton) {
+                            const galleryItem = deleteButton.closest('.gallery-item');
+                            if (galleryItem) {
+                                galleryItem.style.transition = 'all 0.5s ease';
+                                galleryItem.style.opacity = '0';
+                                galleryItem.style.transform = 'scale(0.8)';
+                                
+                                setTimeout(() => {
+                                    galleryItem.remove();
+                                    
+                                    // Check if gallery is empty after deletion
+                                    const remainingItems = document.querySelectorAll('.gallery-item');
+                                    if (remainingItems.length === 0) {
+                                        const galleryGrid = document.getElementById('galleryGrid');
+                                        if (galleryGrid) {
+                                            galleryGrid.innerHTML = `
+                                                <div class="col-12">
+                                                    <div class="empty-gallery">
+                                                        <i class="fas fa-images fa-3x mb-3"></i>
+                                                        <h5>No media uploaded yet</h5>
+                                                        <p>Be the first to share a beautiful moment from our parish community</p>
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }
+                                    }
+                                }, 500);
+                            }
+                        }
+                        
+                        // Show success message
+                        showMessage('Media deleted successfully!', 'success');
+                    } else {
+                        response.json().then(data => {
+                            showMessage(data.error || 'Failed to delete media. Please try again.', 'error');
+                        }).catch(() => {
+                            showMessage('Failed to delete media. Please try again.', 'error');
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage('An error occurred while deleting the media.', 'error');
+                });
+                
+                // Close the modal properly
+                if (deleteModal) {
+                    deleteModal.hide();
+                }
+                deleteMediaId = null;
+            }
+        });
+    }
+    
+    // Form submission handling
+    const uploadForm = document.getElementById('uploadForm');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showMessage('Please select a file to upload.', 'error');
+                return;
+            }
+            
+            // Check file size (10MB limit)
+            if (file.size > 10 * 1024 * 1024) {
+                showMessage('File size must be less than 10MB.', 'error');
+                return;
+            }
+            
+            // Check file type
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'video/mp4'];
+            if (!allowedTypes.includes(file.type)) {
+                showMessage('Only JPG, PNG, and MP4 files are allowed.', 'error');
+                return;
+            }
+            
+            // Show loading message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Uploading...';
+            submitBtn.disabled = true;
+            
+            // Create FormData and submit to server
+            const formData = new FormData(this);
+            
+            fetch(this.action || window.location.pathname, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('File uploaded successfully!', 'success');
+                    this.reset();
+                    const previewContainer = document.getElementById('previewContainer');
+                    if (previewContainer) {
+                        previewContainer.style.display = 'none';
+                    }
+                    // Reload page to show new media
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    response.json().then(data => {
+                        showMessage(data.error || 'Failed to upload file. Please try again.', 'error');
+                    }).catch(() => {
+                        showMessage('Failed to upload file. Please try again.', 'error');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                showMessage('An error occurred while uploading.', 'error');
+            })
+            .finally(() => {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+    
+    // Initialize entrance animations
+    document.querySelectorAll('.gallery-item').forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.6s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+
+// Message display function
+function showMessage(message, type) {
+    // Remove any existing alerts first
+    document.querySelectorAll('.alert.position-fixed').forEach(alert => {
+        alert.remove();
+    });
+    
+    // Create and show a toast message
+    const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+    const iconClass = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    
+    const alertHtml = `
+        <div class="alert ${alertClass} alert-dismissible fade show position-fixed" 
+             style="top: 100px; right: 20px; z-index: 9999; min-width: 300px;">
+            <i class="${iconClass} me-2"></i>${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', alertHtml);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        const alerts = document.querySelectorAll('.alert.position-fixed');
+        alerts.forEach(alert => {
+            if (alert.querySelector('button.btn-close')) {
+                alert.remove();
+            }
+        });
+    }, 5000);
+}
+</script>
+{% endblock %}

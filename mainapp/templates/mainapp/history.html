@@ -1,0 +1,702 @@
+<!-- home.html -->
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Welcome to St. Ignatius Simhasana Cathedral</h1>
+                    <p class="hero-subtitle">A sacred place of worship, community, and spiritual growth in the heart of Kottayam</p>
+                    <div class="hero-buttons mt-4">
+                        <a href="{% url 'services' %}" class="btn btn-primary me-3">Our Services</a>
+                        <a href="{% url 'events' %}" class="btn btn-outline-light">Upcoming Events</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="{% static 'images/pally1.jpeg' %}" alt="St. Ignatius Simhasana Cathedral Kottayam" class="hero-image img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Spiritual Community</h2>
+                    <p class="section-subtitle">Join us in worship and fellowship</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-church fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Worship Services</h3>
+                        <p class="feature-description">Regular masses, special services, and spiritual guidance for all ages.</p>
+                        <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Community Events</h3>
+                        <p class="feature-description">Join our vibrant community activities, celebrations, and outreach programs.</p>
+                        <a href="{% url 'events' %}" class="btn btn-sm btn-outline-primary">View Events</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-history fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Rich History</h3>
+                        <p class="feature-description">Discover the legacy and spiritual heritage of our cathedral.</p>
+                        <a href="{% url 'history' %}" class="btn btn-sm btn-outline-primary">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mass Timings Section -->
+    <section class="mass-timings py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timings-card p-4 rounded">
+                        <h2 class="text-center mb-4">Mass Timings</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Weekdays</h4>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Morning Mass</span>
+                                        <span class="text-secondary">6:30 AM</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Evening Mass</span>
+                                        <span class="text-secondary">5:30 PM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Weekends</h4>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Saturday Vigil</span>
+                                        <span class="text-secondary">6:00 PM</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Sunday Mass</span>
+                                        <span class="text-secondary">8:00 AM, 10:00 AM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="text-muted">* Special masses on holy days and feast days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Events Section -->
+    <section class="events-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <p class="section-subtitle">Join us for these special occasions</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Event cards would be dynamically loaded here -->
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">15</span>
+                            <span class="d-block">DEC</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">Christmas Celebration</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>6:00 PM</p>
+                            <p class="event-description">Join us for our special Christmas Eve mass and celebration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">01</span>
+                            <span class="d-block">JAN</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">New Year's Day Mass</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>9:00 AM</p>
+                            <p class="event-description">Start the new year with a special mass and blessings.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">20</span>
+                            <span class="d-block">JAN</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">Parish Feast Day</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>10:00 AM</p>
+                            <p class="event-description">Celebration of our parish feast with special services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'events' %}" class="btn btn-primary">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Need Spiritual Guidance?</h2>
+                    <p class="mb-0">Our clergy and community are here to support you in your faith journey.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .hero-section {
+        padding: 100px 0;
+        background: 
+            radial-gradient(circle at top, rgba(139, 69, 19, 0.15), transparent 70%),
+            linear-gradient(180deg, rgba(245, 245, 220, 0.95), rgba(218, 165, 32, 0.1)),
+            url("{% static 'images/pally1.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    
+    .hero-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+    
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .hero-title {
+        font-family: 'Cinzel', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--cream-color);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: 'Crimson Text', serif;
+        line-height: 1.6;
+    }
+    
+    .hero-image {
+        max-height: 400px;
+        border: 5px solid rgba(218, 165, 32, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s, box-shadow 0.4s;
+    }
+    
+    .hero-image:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Features Section */
+    .features-section {
+        background: linear-gradient(180deg, rgba(245, 245, 220, 0.9), rgba(218, 165, 32, 0.1));
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .features-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("{% static 'images/parchment-texture.jpg' %}") repeat;
+        opacity: 0.2;
+        z-index: 0;
+    }
+    
+    .features-section .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .section-title {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+        border-radius: 2px;
+    }
+    
+    .section-subtitle {
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        font-family: 'Crimson Text', serif;
+        font-style: italic;
+    }
+    
+    .feature-card {
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 10px;
+        transition: transform 0.4s, box-shadow 0.4s;
+        border: 1px solid rgba(139, 69, 19, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .feature-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.3);
+    }
+    
+    .feature-icon {
+        color: var(--primary-color);
+        transition: transform 0.4s, color 0.4s;
+    }
+    
+    .feature-card:hover .feature-icon {
+        transform: scale(1.1);
+        color: var(--burgundy-color);
+    }
+    
+    .feature-title {
+        color: var(--dark-color);
+        margin-bottom: 1rem;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+    }
+    
+    .feature-description {
+        color: var(--accent-color);
+        margin-bottom: 1.5rem;
+        font-family: 'Crimson Text', serif;
+        line-height: 1.6;
+    }
+    
+    /* Mass Timings Section */
+    .mass-timings {
+        background: 
+            radial-gradient(circle at center, rgba(139, 69, 19, 0.2), transparent 70%),
+            linear-gradient(180deg, rgba(245, 245, 220, 0.9), rgba(218, 165, 32, 0.1)),
+            url("{% static 'images/altar-bg.jpg' %}") no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+    
+    .mass-timings:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .mass-timings .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .timings-card {
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--accent-color);
+        border: 2px solid var(--secondary-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+    
+    .timings-card:before {
+        content: '✝';
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        opacity: 0.3;
+    }
+    
+    .timings-card h2 {
+        color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        position: relative;
+    }
+    
+    .timings-card h2:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: var(--secondary-color);
+    }
+    
+    .timings-card h4 {
+        color: var(--dark-color);
+        font-family: 'Cinzel', serif;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Events Section */
+    .events-section {
+        background: linear-gradient(180deg, rgba(245, 245, 220, 0.9), rgba(218, 165, 32, 0.1));
+        position: relative;
+    }
+    
+    .events-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("{% static 'images/parchment-texture.jpg' %}") repeat;
+        opacity: 0.2;
+        z-index: 0;
+    }
+    
+    .events-section .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .event-card {
+        background: rgba(255, 255, 255, 0.9);
+        transition: transform 0.4s, box-shadow 0.4s;
+        border: 1px solid rgba(139, 69, 19, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .event-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+    }
+    
+    .event-date {
+        background: linear-gradient(135deg, var(--primary-color), var(--burgundy-color));
+        font-family: 'Cinzel', serif;
+        position: relative;
+    }
+    
+    .event-date:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid var(--burgundy-color);
+    }
+    
+    .event-title {
+        color: var(--dark-color);
+        margin-bottom: 0.5rem;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+    }
+    
+    .event-content {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    /* Contact CTA Section */
+    .contact-cta {
+        background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+        color: var(--cream-color);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .contact-cta:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("{% static 'images/cross-pattern.png' %}") repeat;
+        opacity: 0.1;
+    }
+    
+    .contact-cta .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-cta h2 {
+        font-family: 'Cinzel', serif;
+        color: var(--gold-color);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Buttons */
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+        border: 2px solid var(--secondary-color);
+        color: var(--cream-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 5px;
+        transition: all 0.4s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+        color: var(--gold-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+        border-color: var(--gold-color);
+    }
+    
+    .btn-outline-light {
+        border: 2px solid var(--cream-color);
+        color: var(--cream-color);
+        background: transparent;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 5px;
+        transition: all 0.4s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .btn-outline-light:hover {
+        background: var(--cream-color);
+        color: var(--dark-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        transition: all 0.4s;
+    }
+    
+    .btn-outline-primary:hover {
+        background: var(--primary-color);
+        color: var(--cream-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .hero-buttons {
+            text-align: center;
+        }
+        
+        .hero-buttons .btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .hero-buttons .me-3 {
+            margin-right: 0 !important;
+        }
+        
+        .contact-cta .row {
+            text-align: center;
+        }
+        
+        .contact-cta .text-lg-end {
+            text-align: center !important;
+            margin-top: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Animation for feature cards on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const featureCards = document.querySelectorAll('.feature-card');
+        const eventCards = document.querySelectorAll('.event-card');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Feature cards animation
+        featureCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+        
+        // Event cards animation
+        eventCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+        
+        // Hero section text animation
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        const heroButtons = document.querySelector('.hero-buttons');
+        
+        if (heroTitle) {
+            heroTitle.style.opacity = 0;
+            heroTitle.style.transform = 'translateY(20px)';
+            heroTitle.style.transition = 'opacity 0.8s, transform 0.8s';
+            
+            setTimeout(() => {
+                heroTitle.style.opacity = 1;
+                heroTitle.style.transform = 'translateY(0)';
+            }, 300);
+        }
+        
+        if (heroSubtitle) {
+            heroSubtitle.style.opacity = 0;
+            heroSubtitle.style.transform = 'translateY(20px)';
+            heroSubtitle.style.transition = 'opacity 0.8s 0.3s, transform 0.8s 0.3s';
+            
+            setTimeout(() => {
+                heroSubtitle.style.opacity = 1;
+                heroSubtitle.style.transform = 'translateY(0)';
+            }, 600);
+        }
+        
+        if (heroButtons) {
+            heroButtons.style.opacity = 0;
+            heroButtons.style.transform = 'translateY(20px)';
+            heroButtons.style.transition = 'opacity 0.8s 0.6s, transform 0.8s 0.6s';
+            
+            setTimeout(() => {
+                heroButtons.style.opacity = 1;
+                heroButtons.style.transform = 'translateY(0)';
+            }, 900);
+        }
+    });
+</script>
+{% endblock %}

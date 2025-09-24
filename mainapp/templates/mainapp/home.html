@@ -1,0 +1,771 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Ignatius Simhasana Cathedral Kottayam</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Trajan+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;       /* Saddle Brown - traditional church brown */
+            --secondary-color: #DAA520;     /* Goldenrod - liturgical gold */
+            --accent-color: #2F4F4F;       /* Dark Slate Gray - stone color */
+            --light-color: #F5F5DC;        /* Beige - parchment color */
+            --dark-color: #654321;         /* Dark Brown - wooden pews */
+            --gold-color: #FFD700;         /* Pure Gold - sacred gold */
+            --burgundy-color: #800020;     /* Burgundy - liturgical red */
+            --cream-color: #FFFDD0;        /* Cream - altar cloth color */
+            --stone-color: #696969;        /* Dim Gray - cathedral stone */
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: 
+                radial-gradient(circle at top, rgba(139, 69, 19, 0.15), transparent 70%),
+                linear-gradient(180deg, rgba(245, 245, 220, 0.95), rgba(218, 165, 32, 0.1)),
+                url("{% static 'images/pally1.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: var(--accent-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(180deg, var(--primary-color), var(--dark-color));
+            box-shadow: 0 3px 15px rgba(139, 69, 19, 0.4);
+            padding: 15px 0;
+            transition: all 0.4s ease;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .navbar-scrolled {
+            padding: 8px 0;
+            background: linear-gradient(180deg, rgba(139, 69, 19, 0.98), rgba(101, 67, 33, 0.98));
+            backdrop-filter: blur(5px);
+        }
+        
+        .navbar-brand {
+            color: var(--cream-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .navbar-brand img {
+            height: 55px;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+            border: 2px solid var(--secondary-color);
+            border-radius: 50%;
+            padding: 2px;
+            background: rgba(245, 245, 220, 0.1);
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--cream-color);
+            font-weight: 500;
+            margin: 0 8px;
+            position: relative;
+            transition: all 0.4s;
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .navbar-nav .nav-link:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            transition: width 0.4s ease;
+            box-shadow: 0 0 8px var(--secondary-color);
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--gold-color);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .navbar-nav .nav-link:hover:before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: 
+                radial-gradient(circle at center, rgba(139, 69, 19, 0.1), transparent 50%),
+                linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(218, 165, 32, 0.2));
+        }
+        
+        .hero-content {
+            z-index: 2;
+            padding: 2rem;
+            animation: sacredFadeIn 2s ease;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--cream-color);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-variant: small-caps;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            color: var(--secondary-color);
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-sacred {
+            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+            border: 2px solid var(--gold-color);
+            color: var(--dark-color);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-sacred:hover {
+            background: linear-gradient(135deg, var(--gold-color), var(--secondary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline-sacred {
+            border: 2px solid var(--cream-color);
+            color: var(--cream-color);
+            background: rgba(245, 245, 220, 0.1);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-outline-sacred:hover {
+            background: var(--cream-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 245, 220, 0.3);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 0;
+            background: 
+                linear-gradient(180deg, rgba(105, 105, 105, 0.95), rgba(47, 79, 79, 0.9)),
+                radial-gradient(circle at top right, rgba(218, 165, 32, 0.1), transparent 60%);
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--gold-color);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .section-title:before {
+            content: '◆';
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(101, 67, 33, 0.15));
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(255, 215, 0, 0.1));
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 35px rgba(218, 165, 32, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+        }
+        
+        .feature-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--cream-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature-card p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(245, 245, 220, 0.9);
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 6rem 0;
+            background: 
+                linear-gradient(180deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.85)),
+                radial-gradient(circle at bottom left, rgba(218, 165, 32, 0.1), transparent 60%);
+        }
+        
+        .event-card {
+            background: linear-gradient(135deg, rgba(47, 79, 79, 0.3), rgba(105, 105, 105, 0.2));
+            border: 2px solid rgba(218, 165, 32, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: var(--gold-color);
+        }
+        
+        .event-img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+            filter: sepia(20%) contrast(1.1);
+        }
+        
+        .event-date {
+            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+            color: var(--dark-color);
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            padding: 8px 15px;
+            display: inline-block;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .event-content {
+            padding: 2rem;
+        }
+        
+        .event-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--cream-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .event-content p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(245, 245, 220, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--stone-color), var(--accent-color));
+            padding: 4rem 0 2rem;
+            margin-top: auto;
+            border-top: 5px solid var(--secondary-color);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--secondary-color),
+                var(--secondary-color) 20px,
+                var(--gold-color) 20px,
+                var(--gold-color) 40px
+            );
+        }
+        
+        .footer-title {
+            color: var(--gold-color);
+            margin-bottom: 2rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .footer-links a {
+            color: var(--cream-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-left: 25px;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:before {
+            content: '†';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 30px;
+            text-shadow: 0 0 8px rgba(218, 165, 32, 0.4);
+        }
+        
+        .footer-links a:hover:before {
+            color: var(--gold-color);
+            text-shadow: 0 0 10px var(--gold-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--burgundy-color));
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            color: var(--cream-color);
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+            color: var(--dark-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+            border-color: var(--gold-color);
+        }
+        
+        .copyright {
+            border-top: 2px solid rgba(218, 165, 32, 0.4);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--cream-color);
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(218, 165, 32, 0.1), 
+                rgba(255, 215, 0, 0.1), 
+                rgba(218, 165, 32, 0.1), 
+                transparent
+            );
+            border-radius: 8px;
+            padding: 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p {
+            color: var(--cream-color);
+            font-family: 'Crimson Text', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .footer i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Traditional animations */
+        @keyframes sacredFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-sacred, .btn-outline-sacred {
+                width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .navbar-brand img {
+                height: 45px;
+            }
+            
+            .navbar-nav {
+                background: linear-gradient(180deg, rgba(139, 69, 19, 0.95), rgba(101, 67, 33, 0.95));
+                padding: 20px;
+                border-radius: 8px;
+                margin-top: 15px;
+                border: 1px solid rgba(218, 165, 32, 0.4);
+                box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .social-icons {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Traditional scroll effects */
+        .navbar-toggler {
+            border: 2px solid var(--secondary-color);
+            background: rgba(218, 165, 32, 0.2);
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+        }
+        
+        /* Traditional typography enhancements */
+        .navbar-brand span {
+            font-variant: small-caps;
+        }
+        
+        .nav-link {
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'images/pally2.png' %}" alt="Logo">
+            <span>St. Ignatius Simhasana Cathedral</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'administration' %}">Administration</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">About Cathedral</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">St. Ignatius Simhasana Cathedral</h1>
+            <p class="hero-subtitle">A Sacred Haven of Faith in Kottayam</p>
+            <div class="hero-buttons">
+                <a href="{% url 'services' %}" class="btn btn-sacred">Join Holy Worship</a>
+                <a href="{% url 'events' %}" class="btn btn-outline-sacred">Sacred Events</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-sacred">Visit Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Welcome to Our Sacred Community</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3 class="feature-title">Divine Worship Services</h3>
+                    <p>Join our congregation for holy masses and spiritual gatherings that nurture our souls and strengthen our bond with the Almighty.</p>
+                    <a href="{% url 'services' %}" class="btn btn-outline-sacred mt-3">Sacred Times</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="feature-title">Sacred Heritage</h3>
+                    <p>Discover the blessed legacy of our ancient cathedral and the hallowed traditions that have guided our faithful for generations.</p>
+                    <a href="{% url 'history' %}" class="btn btn-outline-sacred mt-3">Explore History</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3 class="feature-title">Christian Fellowship</h3>
+                    <p>Participate in our blessed community outreach and charitable works, spreading Christ's love to all who seek comfort and aid.</p>
+                    <a href="{% url 'events' %}" class="btn btn-outline-sacred mt-3">Serve Together</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section class="events-section">
+    <div class="container">
+        <h2 class="section-title">Sacred Events & Celebrations</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+{% load static %}
+<img src="{% static 'images/lords-day.jpg' %}" alt="Holy Mass" class="event-img">
+                        <div class="event-date">Lord's Day</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Sunday Holy Mass</h3>
+                        <p>Join our weekly celebration of the Eucharist with special prayers and blessings for our parish community.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/gathering.jpg' %}" alt="Fellowship" class="event-img">
+                        <div class="event-date">Blessed Gathering</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Parish Fellowship Feast</h3>
+                        <p>Annual communion dinner celebrating our blessed fellowship and the bonds that unite us in Christian love.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/youth.jpg' %}" alt="Youth Ministry" class="event-img">
+                        <div class="event-date">Young Faithful</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Youth Ministry Gathering</h3>
+                        <p>Sacred fellowship for our young believers with spiritual guidance, prayers, and Christian fellowship activities.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'events' %}" class="btn btn-outline-sacred">View All Sacred Events</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h4 class="footer-title">St. Ignatius Simhasana Cathedral Kottayam</h4>
+                <p>A sacred place of worship, community fellowship, and spiritual growth in the blessed city of Kottayam.</p>
+                <div class="social-icons mt-4">
+                    <a href="https://www.facebook.com/share/g/1CBeccdPRM/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/st.ignatius_youth_association?igsh=bzZqaGtyOWlzZ3lv" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4 class="footer-title">Sacred Links</h4>
+                <div class="footer-links">
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'services' %}">Holy Services</a>
+                    <a href="{% url 'events' %}">Church Events</a>
+                    <a href="{% url 'gallery' %}">Sacred Gallery</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4 class="footer-title">Contact Information</h4>
+                <p><i class="fas fa-church"></i> Cathedral Road, Kottayam, Kerala</p>
+                <p><i class="fas fa-phone"></i> +91 481 256 7890</p>
+                <p><i class="fas fa-envelope"></i> info@stignatiuscathedral.org</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>† In Nomine Patris, et Filii, et Spiritus Sancti †<br>
+            &copy; 2025 St. Ignatius Simhasana Cathedral Kottayam. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+    });
+    
+    // Animation on scroll with traditional timing
+    document.addEventListener('DOMContentLoaded', function() {
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.3}s`;
+        });
+        
+        // Add subtle animation effects for traditional feel
+        const socialIcons = document.querySelectorAll('.social-icons a');
+        socialIcons.forEach((icon, index) => {
+            icon.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script>
+</body>
+</html>

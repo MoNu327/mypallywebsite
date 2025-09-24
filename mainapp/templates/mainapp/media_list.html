@@ -1,0 +1,17 @@
+<!-- media_list.html -->
+
+<h2>Uploaded Media</h2>
+{% for media in media_files %}
+    <div>
+        <h3>{{ media.filename }}</h3>
+        {% if media.file_type == 'image' %}
+            <img src="{{ media.file.url }}" alt="{{ media.filename }}" width="200">
+        {% elif media.file_type == 'video' %}
+            <video width="320" height="240" controls>
+                <source src="{{ media.file.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {% endif %}
+        <p>{{ media.description }}</p>
+    </div>
+{% endfor %}

@@ -1,0 +1,1108 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Events - St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block content %}
+<!-- Events Hero Section -->
+<section class="events-hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-80">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="hero-title">Events at St. Ignatius Simhasana Cathedral</h1>
+                <p class="hero-subtitle">Join us for spiritual gatherings, community events, and special celebrations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section class="upcoming-events py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Upcoming Events</h2>
+                <p class="section-subtitle">Mark your calendar for these special occasions</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Main Featured Event -->
+            <div class="col-lg-12 mb-5">
+                <div class="featured-event-card rounded overflow-hidden shadow-lg">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <div class="event-image h-100">
+                                <img src="{% static 'images/christmas-event.jpg' %}" class="img-fluid h-100 w-100" alt="Christmas Celebration" style="object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="event-details p-4 h-100 d-flex flex-column">
+                                <div class="event-badge mb-3">
+                                    <span class="badge bg-primary">Featured Event</span>
+                                </div>
+                                <h3 class="event-title">Christmas Eve Mass & Celebration</h3>
+                                <div class="event-meta mb-3">
+                                    <div class="event-date">
+                                        <i class="far fa-calendar-alt me-2"></i>
+                                        <span>December 24, 2023</span>
+                                    </div>
+                                    <div class="event-time">
+                                        <i class="far fa-clock me-2"></i>
+                                        <span>6:00 PM - 9:00 PM</span>
+                                    </div>
+                                    <div class="event-location">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>Cathedral Main Hall</span>
+                                    </div>
+                                </div>
+                                <p class="event-description flex-grow-1">
+                                    Join us for a special Christmas Eve mass followed by community celebration with carols, 
+                                    festive decorations, and fellowship. All are welcome to celebrate the birth of our Savior.
+                                </p>
+                                <div class="event-actions mt-auto">
+                                    <button class="btn btn-primary me-2">Add to Calendar</button>
+                                    <button class="btn btn-outline-primary">Share Event</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular Events Grid -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="event-card rounded overflow-hidden shadow h-100">
+                    <div class="event-image">
+                        <img src="{% static 'images/christmas-event.jpg' %}" class="img-fluid w-100" alt="Youth Group Meeting" style="height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="event-date-ribbon">
+                        <div class="date-day">15</div>
+                        <div class="date-month">DEC</div>
+                    </div>
+                    <div class="event-content p-3">
+                        <h4 class="event-title">Youth Group Meeting</h4>
+                        <div class="event-meta">
+                            <small class="text-muted">
+                                <i class="far fa-clock me-1"></i>4:00 PM - 6:00 PM
+                            </small>
+                        </div>
+                        <p class="event-description mt-2">
+                            Monthly gathering for our youth community with activities, discussions, and prayer.
+                        </p>
+                        <div class="event-tags">
+                            <span class="badge bg-light text-dark">Youth</span>
+                            <span class="badge bg-light text-dark">Community</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="event-card rounded overflow-hidden shadow h-100">
+                    <div class="event-image">
+                        <img src="{% static 'images/charity-events.jpg' %}" class="img-fluid w-100" alt="Charity Drive" style="height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="event-date-ribbon">
+                        <div class="date-day">20</div>
+                        <div class="date-month">DEC</div>
+                    </div>
+                    <div class="event-content p-3">
+                        <h4 class="event-title">Charity Drive</h4>
+                        <div class="event-meta">
+                            <small class="text-muted">
+                                <i class="far fa-clock me-1"></i>9:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <p class="event-description mt-2">
+                            Annual charity event to collect gifts and essentials for families in need within our community.
+                        </p>
+                        <div class="event-tags">
+                            <span class="badge bg-light text-dark">Charity</span>
+                            <span class="badge bg-light text-dark">Community</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="event-card rounded overflow-hidden shadow h-100">
+                    <div class="event-image">
+                        <img src="{% static 'images/carol-services.jpg' %}" class="img-fluid w-100" alt="Carol Service" style="height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="event-date-ribbon">
+                        <div class="date-day">23</div>
+                        <div class="date-month">DEC</div>
+                    </div>
+                    <div class="event-content p-3">
+                        <h4 class="event-title">Festival of Carols</h4>
+                        <div class="event-meta">
+                            <small class="text-muted">
+                                <i class="far fa-clock me-1"></i>7:00 PM - 9:00 PM
+                            </small>
+                        </div>
+                        <p class="event-description mt-2">
+                            Special evening of Christmas carols performed by our cathedral choir and community members.
+                        </p>
+                        <div class="event-tags">
+                            <span class="badge bg-light text-dark">Music</span>
+                            <span class="badge bg-light text-dark">Christmas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Monthly Calendar Section -->
+<section class="calendar-section py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Event Calendar</h2>
+                <p class="section-subtitle">View our schedule for the coming months</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="calendar-card rounded shadow-sm">
+                    <div class="calendar-header p-3 bg-primary text-white rounded-top d-flex justify-content-between align-items-center">
+                        <button id="prev-month" class="btn btn-light btn-sm">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h4 id="current-month-year" class="mb-0 text-center">December 2023</h4>
+                        <button id="next-month" class="btn btn-light btn-sm">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-body p-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="calendar-days">
+                                    <!-- Calendar days will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Event Details Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventModalLabel">Event Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 id="modal-event-title" class="mb-3"></h4>
+                <div class="event-meta mb-3">
+                    <div class="event-date mb-2">
+                        <i class="far fa-calendar-alt me-2"></i>
+                        <span id="modal-event-date"></span>
+                    </div>
+                    <div class="event-time mb-2">
+                        <i class="far fa-clock me-2"></i>
+                        <span id="modal-event-time"></span>
+                    </div>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span id="modal-event-location"></span>
+                    </div>
+                </div>
+                <p id="modal-event-description"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add to Calendar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Regular Events Section -->
+<section class="regular-events py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Regular Events</h2>
+                <p class="section-subtitle">Ongoing activities and gatherings</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="regular-event-card text-center p-4 h-100">
+                    <div class="event-icon mb-3">
+                        <i class="fas fa-pray fa-2x"></i>
+                    </div>
+                    <h4>Daily Mass</h4>
+                    <p>Morning: 6:30 AM<br>Evening: 5:30 PM</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="regular-event-card text-center p-4 h-100">
+                    <div class="event-icon mb-3">
+                        <i class="fas fa-bible fa-2x"></i>
+                    </div>
+                    <h4>Bible Study</h4>
+                    <p>Every Wednesday<br>7:00 PM - 8:30 PM</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="regular-event-card text-center p-4 h-100">
+                    <div class="event-icon mb-3">
+                        <i class="fas fa-music fa-2x"></i>
+                    </div>
+                    <h4>Choir Practice</h4>
+                    <p>Every Friday<br>6:00 PM - 8:00 PM</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="regular-event-card text-center p-4 h-100">
+                    <div class="event-icon mb-3">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                    <h4>Community Lunch</h4>
+                    <p>First Sunday of Month<br>After 10:00 AM Mass</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Event Subscription Section -->
+<section class="subscription-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3>Stay Updated with Our Events</h3>
+                <p class="mb-0">Subscribe to our newsletter to receive notifications about upcoming events and activities.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                    <button class="btn btn-warning" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Events Hero Section */
+    .events-hero-section {
+        padding: 120px 0 80px;
+        background: 
+            radial-gradient(circle at top, rgba(139, 69, 19, 0.15), transparent 70%),
+            linear-gradient(180deg, rgba(245, 245, 220, 0.95), rgba(218, 165, 32, 0.1)),
+            url("{% static 'images/pally1.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    .min-vh-80 {
+        min-height: 80vh;
+    }
+    
+    .hero-title {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        color: var(--accent-color);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+        border-radius: 2px;
+    }
+    
+    .section-subtitle {
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Featured Event Card */
+    .featured-event-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid var(--secondary-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .featured-event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .event-badge .badge {
+        background: linear-gradient(135deg, var(--burgundy-color), var(--primary-color));
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-family: 'Cinzel', serif;
+    }
+    
+    .event-title {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+    }
+    
+    .event-meta {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+    
+    .event-meta i {
+        color: var(--secondary-color);
+        width: 20px;
+    }
+    
+    .event-description {
+        color: var(--accent-color);
+        line-height: 1.6;
+        font-family: 'Crimson Text', serif;
+        font-size: 1.1rem;
+    }
+    
+    /* Event Cards */
+    .event-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(218, 165, 32, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .event-date-ribbon {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: linear-gradient(135deg, var(--primary-color), var(--burgundy-color));
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .date-day {
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1;
+        font-family: 'Cinzel', serif;
+    }
+    
+    .date-month {
+        font-size: 0.9rem;
+        line-height: 1;
+        font-family: 'Crimson Text', serif;
+    }
+    
+    .event-content h4 {
+        color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+        margin-bottom: 0.5rem;
+    }
+    
+    .event-content p {
+        color: var(--accent-color);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Calendar Section */
+    .calendar-section {
+        background: rgba(245, 245, 220, 0.7);
+    }
+    
+    .calendar-card {
+        background: white;
+        border: 2px solid var(--secondary-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .calendar-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        font-family: 'Cinzel', serif;
+    }
+    
+    .calendar-body {
+        background: white;
+    }
+    
+    .calendar-body th {
+        background: rgba(139, 69, 19, 0.1);
+        font-weight: 600;
+        color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+        padding: 15px 5px;
+    }
+    
+    .calendar-body td {
+        height: 80px;
+        vertical-align: top;
+        padding: 8px 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-family: 'Crimson Text', serif;
+        border: 1px solid rgba(139, 69, 19, 0.1);
+    }
+    
+    .calendar-body td:hover {
+        background-color: rgba(218, 165, 32, 0.1);
+    }
+    
+    .calendar-body td.has-event {
+        background-color: rgba(212, 175, 55, 0.1);
+        position: relative;
+    }
+    
+    .calendar-body td.has-event:hover {
+        background-color: rgba(212, 175, 55, 0.2);
+    }
+    
+    .calendar-body td.today {
+        background-color: rgba(0, 123, 255, 0.1);
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .calendar-body td.other-month {
+        color: #6c757d;
+        background-color: #f8f9fa;
+    }
+    
+    .calendar-body td.has-event::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+    }
+    
+    .event-indicator {
+        font-size: 0.7rem;
+        color: var(--primary-color);
+        display: block;
+        margin-top: 2px;
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Regular Events Cards */
+    .regular-events {
+        background: rgba(245, 245, 220, 0.5);
+    }
+    
+    .regular-event-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid rgba(218, 165, 32, 0.3);
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .regular-event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .event-icon {
+        color: var(--secondary-color);
+    }
+    
+    .regular-event-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-family: 'Cinzel', serif;
+    }
+    
+    .regular-event-card p {
+        color: var(--accent-color);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Subscription Section */
+    .subscription-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+        color: white;
+    }
+    
+    .subscription-section h3 {
+        color: var(--cream-color);
+        font-family: 'Cinzel', serif;
+    }
+    
+    .subscription-section p {
+        color: rgba(255, 255, 255, 0.9);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-color), var(--burgundy-color));
+        border: none;
+        font-family: 'Cinzel', serif;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--burgundy-color), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline-primary {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    
+    .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-warning {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        border: none;
+        color: var(--dark-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .btn-warning:hover {
+        background: linear-gradient(135deg, var(--gold-color), var(--secondary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Badges */
+    .badge.bg-light {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: var(--dark-color) !important;
+        border: 1px solid rgba(139, 69, 19, 0.2);
+        font-family: 'Crimson Text', serif;
+    }
+    
+    /* Modal Styling */
+    .modal-content {
+        border: 2px solid var(--secondary-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+        color: var(--cream-color);
+        font-family: 'Cinzel', serif;
+        border-bottom: 2px solid var(--secondary-color);
+    }
+    
+    .modal-title {
+        color: var(--cream-color);
+    }
+    
+    .modal-body h4 {
+        color: var(--primary-color);
+        font-family: 'Cinzel', serif;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .calendar-body td {
+            height: 60px;
+            font-size: 0.9rem;
+        }
+        
+        .subscription-section .input-group {
+            flex-direction: column;
+        }
+        
+        .subscription-section .btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .event-date-ribbon {
+            top: 10px;
+            left: 10px;
+            padding: 6px 10px;
+        }
+        
+        .date-day {
+            font-size: 1.2rem;
+        }
+        
+        .date-month {
+            font-size: 0.8rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Event card animations
+        const eventCards = document.querySelectorAll('.event-card, .featured-event-card, .regular-event-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        eventCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+        
+        // Add to calendar functionality (basic example)
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if (button.textContent.includes('Calendar')) {
+                button.addEventListener('click', function() {
+                    alert('Event added to your calendar!');
+                });
+            }
+        });
+        
+        // Share event functionality (basic example)
+        document.querySelectorAll('.btn-outline-primary').forEach(button => {
+            if (button.textContent.includes('Share')) {
+                button.addEventListener('click', function() {
+                    alert('Event shared!');
+                });
+            }
+        });
+        
+        // Calendar functionality
+        const calendarDays = document.getElementById('calendar-days');
+        const currentMonthYear = document.getElementById('current-month-year');
+        const prevMonthBtn = document.getElementById('prev-month');
+        const nextMonthBtn = document.getElementById('next-month');
+        
+        // Set current date to today's date
+        let currentDate = new Date();
+        
+        // Function to generate recurring weekly events for a given month
+        function generateRecurringEvents(year, month) {
+            const recurringEvents = [];
+            
+            // Get the first and last day of the month
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            // Generate Saturday Mass events (every Saturday)
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const date = new Date(year, month, day);
+                if (date.getDay() === 6) { // Saturday (6)
+                    recurringEvents.push({
+                        date: new Date(date),
+                        title: 'Saturday Holy Mass',
+                        time: '7:00 AM',
+                        location: 'Cathedral Main Hall',
+                        description: 'Weekly Saturday morning mass for spiritual nourishment and community gathering.',
+                        isRecurring: true
+                    });
+                }
+            }
+            
+            // Generate Sunday events (Sunday Mass and Sunday School)
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const date = new Date(year, month, day);
+                if (date.getDay() === 0) { // Sunday (0)
+                    // Sunday Mass
+                    recurringEvents.push({
+                        date: new Date(date),
+                        title: 'Sunday Holy Mass',
+                        time: '7:45 AM',
+                        location: 'Cathedral Main Hall',
+                        description: 'Main Sunday service with holy communion, hymns, and sermon.',
+                        isRecurring: true
+                    });
+                    
+                    // Sunday School (after mass)
+                    recurringEvents.push({
+                        date: new Date(date),
+                        title: 'Sunday School',
+                        time: '9:00 AM - 10:30 AM',
+                        location: 'Education Building',
+                        description: 'Weekly Sunday school classes for children and youth following the morning mass.',
+                        isRecurring: true
+                    });
+                }
+            }
+            
+            return recurringEvents;
+        }
+        
+        // Define special events data
+        const specialEvents = [
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
+                title: 'Youth Group Meeting',
+                time: '4:00 PM - 6:00 PM',
+                location: 'Youth Hall',
+                description: 'Monthly gathering for our youth community with activities, discussions, and prayer.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth(), 20),
+                title: 'Charity Drive',
+                time: '9:00 AM - 12:00 PM',
+                location: 'Cathedral Grounds',
+                description: 'Annual charity event to collect gifts and essentials for families in need within our community.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth(), 23),
+                title: 'Festival of Carols',
+                time: '7:00 PM - 9:00 PM',
+                location: 'Main Hall',
+                description: 'Special evening of Christmas carols performed by our cathedral choir and community members.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 10),
+                title: 'Community Service Day',
+                time: '8:00 AM - 12:00 PM',
+                location: 'Cathedral & Surrounding Area',
+                description: 'Join us for a day of community service and outreach activities.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 15),
+                title: 'Bible Study Workshop',
+                time: '2:00 PM - 4:00 PM',
+                location: 'Conference Room',
+                description: 'Special workshop focusing on biblical teachings and discussions.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 14),
+                title: 'Elders Meeting',
+                time: '3:00 PM - 5:00 PM',
+                location: 'Conference Room',
+                description: 'Monthly meeting for church elders and leadership.'
+            },
+            {
+                date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 21),
+                title: 'Community Potluck',
+                time: '6:00 PM - 8:00 PM',
+                location: 'Fellowship Hall',
+                description: 'Monthly community potluck dinner. Bring a dish to share!'
+            }
+        ];
+        
+        // Function to get all events for a specific month
+        function getEventsForMonth(year, month) {
+            const recurringEvents = generateRecurringEvents(year, month);
+            const allEvents = [...recurringEvents, ...specialEvents];
+            
+            // Filter special events to only include those in the current month
+            const filteredSpecialEvents = specialEvents.filter(event => 
+                event.date.getFullYear() === year && event.date.getMonth() === month
+            );
+            
+            return [...recurringEvents, ...filteredSpecialEvents];
+        }
+        
+        // Function to generate calendar
+        function generateCalendar() {
+            // Clear previous calendar
+            calendarDays.innerHTML = '';
+            
+            // Set month and year header
+            const monthNames = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            currentMonthYear.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            // Get events for current month
+            const currentMonthEvents = getEventsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            
+            // Get previous month's days to fill the first week
+            const prevMonthLastDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            
+            let calendarHTML = '';
+            let dayCount = 1;
+            let nextMonthDayCount = 1;
+            
+            // Create calendar rows
+            for (let i = 0; i < 6; i++) {
+                calendarHTML += '<tr>';
+                
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < startingDay) {
+                        // Previous month's days
+                        const day = prevMonthLastDay - startingDay + j + 1;
+                        calendarHTML += `<td class="other-month">${day}</td>`;
+                    } else if (dayCount > daysInMonth) {
+                        // Next month's days
+                        calendarHTML += `<td class="other-month">${nextMonthDayCount}</td>`;
+                        nextMonthDayCount++;
+                    } else {
+                        // Current month's days
+                        const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayCount);
+                        const today = new Date();
+                        const isToday = dayDate.toDateString() === today.toDateString();
+                        
+                        // Check if this day has events
+                        const dayEvents = currentMonthEvents.filter(event => 
+                            event.date.toDateString() === dayDate.toDateString()
+                        );
+                        
+                        const hasEvents = dayEvents.length > 0;
+                        const todayClass = isToday ? 'today' : '';
+                        const eventClass = hasEvents ? 'has-event' : '';
+                        
+                        calendarHTML += `<td class="${todayClass} ${eventClass}" data-date="${dayDate.toISOString().split('T')[0]}">`;
+                        calendarHTML += `<div>${dayCount}</div>`;
+                        
+                        if (hasEvents) {
+                            // Show abbreviated event names for recurring events
+                            dayEvents.forEach(event => {
+                                let eventText = event.title;
+                                if (event.isRecurring) {
+                                    // Shorten recurring event names for better display
+                                    if (event.title.includes('Saturday')) {
+                                        eventText = 'Sat Mass: 7AM';
+                                    } else if (event.title.includes('Sunday Holy Mass')) {
+                                        eventText = 'Sun Mass: 7:45AM';
+                                    } else if (event.title.includes('Sunday School')) {
+                                        eventText = 'Sunday School';
+                                    }
+                                }
+                                calendarHTML += `<small class="event-indicator d-block">${eventText}</small>`;
+                            });
+                        }
+                        
+                        calendarHTML += '</td>';
+                        dayCount++;
+                    }
+                }
+                
+                calendarHTML += '</tr>';
+                
+                // Stop if we've displayed all days
+                if (dayCount > daysInMonth && nextMonthDayCount > 7) {
+                    break;
+                }
+            }
+            
+            calendarDays.innerHTML = calendarHTML;
+            
+            // Add click event listeners to all calendar days
+            document.querySelectorAll('.calendar-body td').forEach(day => {
+                day.addEventListener('click', function() {
+                    const dateStr = this.getAttribute('data-date');
+                    if (dateStr) {
+                        const date = new Date(dateStr);
+                        
+                        // Get events for the clicked date (including recurring events for that month)
+                        const monthEvents = getEventsForMonth(date.getFullYear(), date.getMonth());
+                        const dayEvents = monthEvents.filter(event => 
+                            event.date.toDateString() === date.toDateString()
+                        );
+                        
+                        if (dayEvents.length > 0) {
+                            // Show all events for this date in modal
+                            showEventModal(dayEvents, date);
+                        } else {
+                            // Show message for no events
+                            showNoEventsModal(date);
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Function to show event details in modal
+        function showEventModal(events, date) {
+            const modalTitle = document.getElementById('modal-event-title');
+            const modalDate = document.getElementById('modal-event-date');
+            const modalTime = document.getElementById('modal-event-time');
+            const modalLocation = document.getElementById('modal-event-location');
+            const modalDescription = document.getElementById('modal-event-description');
+            
+            // Clear previous content
+            modalTitle.innerHTML = '';
+            modalTime.innerHTML = '';
+            modalLocation.innerHTML = '';
+            modalDescription.innerHTML = '';
+            
+            // Set date
+            modalDate.textContent = date.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            if (events.length === 1) {
+                // Single event
+                const event = events[0];
+                modalTitle.textContent = event.title;
+                modalTime.textContent = event.time;
+                modalLocation.textContent = event.location;
+                modalDescription.textContent = event.description;
+            } else {
+                // Multiple events
+                modalTitle.textContent = `${events.length} Events on ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
+                
+                events.forEach((event, index) => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'mb-3 pb-2 border-bottom';
+                    
+                    // Add recurring badge for recurring events
+                    const recurringBadge = event.isRecurring ? '<span class="badge bg-info me-2">Weekly</span>' : '';
+                    
+                    eventDiv.innerHTML = `
+                        <h6 class="mb-1">${recurringBadge}${event.title}</h6>
+                        <p class="mb-1"><small><i class="far fa-clock me-1"></i>${event.time}</small></p>
+                        <p class="mb-1"><small><i class="fas fa-map-marker-alt me-1"></i>${event.location}</small></p>
+                        <p class="mb-0"><small>${event.description}</small></p>
+                    `;
+                    modalDescription.appendChild(eventDiv);
+                });
+            }
+            
+            // Show the modal
+            const eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+            eventModal.show();
+        }
+        
+        // Function to show message for dates with no events
+        function showNoEventsModal(date) {
+            const modalTitle = document.getElementById('modal-event-title');
+            const modalDate = document.getElementById('modal-event-date');
+            const modalTime = document.getElementById('modal-event-time');
+            const modalLocation = document.getElementById('modal-event-location');
+            const modalDescription = document.getElementById('modal-event-description');
+            
+            // Clear previous content
+            modalTitle.innerHTML = '';
+            modalTime.innerHTML = '';
+            modalLocation.innerHTML = '';
+            modalDescription.innerHTML = '';
+            
+            // Set content for no events
+            modalTitle.textContent = 'No Events Scheduled';
+            modalDate.textContent = date.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            modalDescription.textContent = 'There are no special events scheduled for this date. Regular weekly services may still be available.';
+            
+            // Show the modal
+            const eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
+            eventModal.show();
+        }
+        
+        // Event listeners for month navigation
+        prevMonthBtn.addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            generateCalendar();
+        });
+        
+        nextMonthBtn.addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            generateCalendar();
+        });
+        
+        // Initialize calendar with current date
+        generateCalendar();
+    });
+</script>
+{% endblock %}

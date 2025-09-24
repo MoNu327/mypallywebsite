@@ -1,0 +1,351 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Welcome to St. Ignatius Simhasana Cathedral</h1>
+                    <p class="hero-subtitle">A sacred place of worship, community, and spiritual growth in the heart of Kottayam</p>
+                    <div class="hero-buttons mt-4">
+                        <a href="{% url 'services' %}" class="btn btn-primary me-3">Our Services</a>
+                        <a href="{% url 'events' %}" class="btn btn-outline-light">Upcoming Events</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="{% static 'images/cathedral-front.jpg' %}" alt="St. Ignatius Cathedral" class="hero-image img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Spiritual Community</h2>
+                    <p class="section-subtitle">Join us in worship and fellowship</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-church fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Worship Services</h3>
+                        <p class="feature-description">Regular masses, special services, and spiritual guidance for all ages.</p>
+                        <a href="{% url 'services' %}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Community Events</h3>
+                        <p class="feature-description">Join our vibrant community activities, celebrations, and outreach programs.</p>
+                        <a href="{% url 'events' %}" class="btn btn-sm btn-outline-primary">View Events</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-history fa-3x"></i>
+                        </div>
+                        <h3 class="feature-title">Rich History</h3>
+                        <p class="feature-description">Discover the legacy and spiritual heritage of our cathedral.</p>
+                        <a href="{% url 'history' %}" class="btn btn-sm btn-outline-primary">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mass Timings Section -->
+    <section class="mass-timings py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timings-card p-4 rounded">
+                        <h2 class="text-center mb-4">Mass Timings</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Weekdays</h4>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Morning Mass</span>
+                                        <span class="text-secondary">6:30 AM</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Evening Mass</span>
+                                        <span class="text-secondary">5:30 PM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Weekends</h4>
+                                <ul class="list-unstyled">
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Saturday Vigil</span>
+                                        <span class="text-secondary">6:00 PM</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-2 border-bottom">
+                                        <span>Sunday Mass</span>
+                                        <span class="text-secondary">8:00 AM, 10:00 AM</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="text-muted">* Special masses on holy days and feast days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Events Section -->
+    <section class="events-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <p class="section-subtitle">Join us for these special occasions</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Event cards would be dynamically loaded here -->
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">15</span>
+                            <span class="d-block">DEC</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">Christmas Celebration</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>6:00 PM</p>
+                            <p class="event-description">Join us for our special Christmas Eve mass and celebration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">01</span>
+                            <span class="d-block">JAN</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">New Year's Day Mass</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>9:00 AM</p>
+                            <p class="event-description">Start the new year with a special mass and blessings.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="event-card rounded overflow-hidden shadow">
+                        <div class="event-date p-3 text-center text-white">
+                            <span class="d-block fs-4 fw-bold">20</span>
+                            <span class="d-block">JAN</span>
+                        </div>
+                        <div class="event-content p-3">
+                            <h4 class="event-title">Parish Feast Day</h4>
+                            <p class="event-time text-muted"><i class="far fa-clock me-2"></i>10:00 AM</p>
+                            <p class="event-description">Celebration of our parish feast with special services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'events' %}" class="btn btn-primary">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Need Spiritual Guidance?</h2>
+                    <p class="mb-0">Our clergy and community are here to support you in your faith journey.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .hero-section {
+        padding: 100px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{% static 'images/cathedral-interior.jpg' %}") no-repeat center center;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #fff;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hero-image {
+        max-height: 400px;
+        border: 5px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Features Section */
+    .features-section {
+        background-color: rgba(30, 42, 47, 0.9);
+    }
+    
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        color: var(--secondary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+    }
+    
+    .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-icon {
+        color: var(--secondary-color);
+    }
+    
+    .feature-title {
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-description {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Mass Timings Section */
+    .mass-timings {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("{% static 'images/altar.jpg' %}") no-repeat center center;
+        background-size: cover;
+    }
+    
+    .timings-card {
+        background: rgba(26, 71, 42, 0.9);
+        color: #fff;
+    }
+    
+    /* Events Section */
+    .events-section {
+        background-color: rgba(30, 42, 47, 0.9);
+    }
+    
+    .event-card {
+        background: rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .event-date {
+        background: var(--primary-color);
+    }
+    
+    .event-title {
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Contact CTA Section */
+    .contact-cta {
+        background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+        color: #fff;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .hero-buttons .btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .hero-buttons .me-3 {
+            margin-right: 0 !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Simple animation for feature cards on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        featureCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+    });
+</script>
+{% endblock %}

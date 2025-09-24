@@ -1,0 +1,564 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}Home - St. Ignatius Simhasana Cathedral Kottayam{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">St. Ignatius Simhasana Cathedral</h1>
+            <p class="hero-subtitle">A Sacred Haven of Faith in Kottayam</p>
+            <div class="hero-buttons">
+                <a href="{% url 'services' %}" class="btn btn-sacred">Join Holy Worship</a>
+                <a href="{% url 'events' %}" class="btn btn-outline-sacred">Sacred Events</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-sacred">Visit Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Welcome to Our Sacred Community</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3 class="feature-title">Divine Worship Services</h3>
+                    <p>Join our congregation for holy masses and spiritual gatherings that nurture our souls and strengthen our bond with the Almighty.</p>
+                    <a href="{% url 'services' %}" class="btn btn-outline-sacred mt-3">Sacred Times</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="feature-title">Sacred Heritage</h3>
+                    <p>Discover the blessed legacy of our ancient cathedral and the hallowed traditions that have guided our faithful for generations.</p>
+                    <a href="{% url 'history' %}" class="btn btn-outline-sacred mt-3">Explore History</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3 class="feature-title">Christian Fellowship</h3>
+                    <p>Participate in our blessed community outreach and charitable works, spreading Christ's love to all who seek comfort and aid.</p>
+                    <a href="{% url 'events' %}" class="btn btn-outline-sacred mt-3">Serve Together</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section class="events-section">
+    <div class="container">
+        <h2 class="section-title">Sacred Events & Celebrations</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+{% load static %}
+<img src="{% static 'images/lords-day.jpg' %}" alt="Holy Mass" class="event-img">
+                        <div class="event-date">Lord's Day</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Sunday Holy Mass</h3>
+                        <p>Join our weekly celebration of the Eucharist with special prayers and blessings for our parish community.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/gathering.jpg' %}" alt="Fellowship" class="event-img">
+                        <div class="event-date">Blessed Gathering</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Parish Fellowship Feast</h3>
+                        <p>Annual communion dinner celebrating our blessed fellowship and the bonds that unite us in Christian love.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="event-card">
+                    <div class="position-relative">
+                        <img src="{% static 'images/youth.jpg' %}" alt="Youth Ministry" class="event-img">
+                        <div class="event-date">Young Faithful</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Youth Ministry Gathering</h3>
+                        <p>Sacred fellowship for our young believers with spiritual guidance, prayers, and Christian fellowship activities.</p>
+                        <a href="#" class="btn btn-sm btn-sacred">Sacred Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'events' %}" class="btn btn-outline-sacred">View All Sacred Events</a>
+        </div>
+    </div>
+</section>
+
+<!-- Mass Times Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Holy Mass Schedule</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mass-times-container">
+                    <div class="mass-time-item">
+                        <div class="mass-day">Weekdays</div>
+                        <div class="mass-time">6:30 AM † 6:00 PM</div>
+                    </div>
+                    <div class="mass-time-item">
+                        <div class="mass-day">Saturdays</div>
+                        <div class="mass-time">6:30 AM † 6:00 PM</div>
+                    </div>
+                    <div class="mass-time-item">
+                        <div class="mass-day">Lord's Day</div>
+                        <div class="mass-time">6:30 AM † 8:30 AM † 4:00 PM</div>
+                    </div>
+                    <div class="mass-time-item">
+                        <div class="mass-day">First Fridays</div>
+                        <div class="mass-time">6:30 AM † 10:00 AM † 6:00 PM</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="cathedral-image">
+                    <img src="https://via.placeholder.com/500x300/8B4513/F5F5DC?text=Sacred+Interior" alt="Cathedral Interior" class="img-fluid rounded">
+                    <div class="image-caption">The Sacred Interior of Our Blessed Cathedral</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scripture Quote Section -->
+<section class="events-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <blockquote class="sacred-quote">
+                    <div class="quote-ornament">✠</div>
+                    <p class="quote-text">"For where two or three gather in My name, there am I with them."</p>
+                    <footer class="quote-footer">— Holy Gospel according to Saint Matthew 18:20 —</footer>
+                    <div class="quote-ornament">✠</div>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background: 
+            radial-gradient(circle at center, rgba(139, 69, 19, 0.1), transparent 50%),
+            linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(218, 165, 32, 0.2));
+    }
+    
+    .hero-content {
+        z-index: 2;
+        padding: 2rem;
+        animation: sacredFadeIn 2s ease;
+    }
+    
+    .hero-title {
+        font-family: 'Cinzel', serif;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--cream-color);
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-variant: small-caps;
+    }
+    
+    .hero-subtitle {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+        color: var(--secondary-color);
+        font-style: italic;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .btn-sacred {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        border: 2px solid var(--gold-color);
+        color: var(--dark-color);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        padding: 15px 30px;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-sacred:hover {
+        background: linear-gradient(135deg, var(--gold-color), var(--secondary-color));
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+        color: var(--primary-color);
+    }
+    
+    .btn-outline-sacred {
+        border: 2px solid var(--cream-color);
+        color: var(--cream-color);
+        background: rgba(245, 245, 220, 0.1);
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        padding: 15px 30px;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.95rem;
+        backdrop-filter: blur(5px);
+    }
+    
+    .btn-outline-sacred:hover {
+        background: var(--cream-color);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(245, 245, 220, 0.3);
+    }
+    
+    .features-section {
+        padding: 6rem 0;
+        background: 
+            linear-gradient(180deg, rgba(105, 105, 105, 0.95), rgba(47, 79, 79, 0.9)),
+            radial-gradient(circle at top right, rgba(218, 165, 32, 0.1), transparent 60%);
+    }
+    
+    .section-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        color: var(--gold-color);
+        position: relative;
+        padding-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .section-title:before {
+        content: '◆';
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: var(--secondary-color);
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--gold-color), var(--secondary-color));
+        border-radius: 2px;
+    }
+    
+    .feature-card {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.2), rgba(101, 67, 33, 0.15));
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 12px;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(255, 215, 0, 0.1));
+        border-color: var(--gold-color);
+        box-shadow: 0 15px 35px rgba(218, 165, 32, 0.3);
+    }
+    
+    .feature-icon {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    }
+    
+    .feature-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        color: var(--cream-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .feature-card p {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: rgba(245, 245, 220, 0.9);
+    }
+    
+    .events-section {
+        padding: 6rem 0;
+        background: 
+            linear-gradient(180deg, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.85)),
+            radial-gradient(circle at bottom left, rgba(218, 165, 32, 0.1), transparent 60%);
+    }
+    
+    .event-card {
+        background: linear-gradient(135deg, rgba(47, 79, 79, 0.3), rgba(105, 105, 105, 0.2));
+        border: 2px solid rgba(218, 165, 32, 0.4);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .event-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border-color: var(--gold-color);
+    }
+    
+    .event-img {
+        height: 220px;
+        object-fit: cover;
+        width: 100%;
+        filter: sepia(20%) contrast(1.1);
+    }
+    
+    .event-date {
+        background: linear-gradient(135deg, var(--secondary-color), var(--gold-color));
+        color: var(--dark-color);
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        padding: 8px 15px;
+        display: inline-block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .event-content {
+        padding: 2rem;
+    }
+    
+    .event-content h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.3rem;
+        color: var(--cream-color);
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .event-content p {
+        font-family: 'Crimson Text', serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(245, 245, 220, 0.9);
+        margin-bottom: 1.5rem;
+    }
+    
+    .mass-times-container {
+        background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(47, 79, 79, 0.2));
+        border: 2px solid rgba(218, 165, 32, 0.4);
+        border-radius: 12px;
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mass-time-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+    }
+    
+    .mass-time-item:last-child {
+        border-bottom: none;
+    }
+    
+    .mass-day {
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        color: var(--cream-color);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .mass-time {
+        font-family: 'Crimson Text', serif;
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    
+    .cathedral-image {
+        position: relative;
+    }
+    
+    .cathedral-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 3px solid var(--secondary-color);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        filter: sepia(15%) contrast(1.1);
+    }
+    
+    .image-caption {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Crimson Text', serif;
+        color: var(--secondary-color);
+        font-style: italic;
+        font-size: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .sacred-quote {
+        padding: 3rem;
+        background: linear-gradient(135deg, rgba(47, 79, 79, 0.4), rgba(105, 105, 105, 0.3));
+        border: 2px solid var(--secondary-color);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+    
+    .quote-ornament {
+        font-size: 2.5rem;
+        color: var(--gold-color);
+        margin: 1rem 0;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+    
+    .quote-text {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.8rem;
+        font-style: italic;
+        color: var(--cream-color);
+        margin: 2rem 0;
+        line-height: 1.6;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .quote-footer {
+        font-family: 'Cinzel', serif;
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 2rem 0 0 0;
+    }
+    
+    /* Traditional animations */
+    @keyframes sacredFadeIn {
+        from { 
+            opacity: 0; 
+            transform: translateY(30px);
+        }
+        to { 
+            opacity: 1; 
+            transform: translateY(0);
+        }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+        }
+        
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-sacred, .btn-outline-sacred {
+            width: 250px;
+            margin-bottom: 10px;
+        }
+        
+        .mass-time-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .quote-text {
+            font-size: 1.4rem;
+        }
+        
+        .image-caption {
+            position: static;
+            transform: none;
+            margin-top: 15px;
+        }
+    }
+</style>
+{% endblock %}
